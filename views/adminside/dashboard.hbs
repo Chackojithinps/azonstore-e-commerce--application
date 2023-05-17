@@ -6,8 +6,28 @@ id="myChart" style="width:100%; max-width:600px; height:500px;">
 </div>
 
 </div>
+<div class="d-flex" style="justify-content:space-between">
 
-    <div class="bg-light text-center rounded p-4">
+<form action="/adminDashboard?" class="d-flex" method="">
+                    <div class="p-2">
+                        
+                        <input class="form-control" type="date" value="{{from}}" name="from">
+                    </div>
+                    <div class="p-2">
+                        
+                        <input class="form-control" type="date" value="{{to}}" name="to">
+                    </div>
+
+                    <div class="p-2">
+                        
+                        <a href=""><button class="btn btn-primary" type="submit">Filter</button></a>
+                    </div>
+</form>
+<div>
+  <button onclick="printDiv('printAll1')">Download PDF</button>
+</div>
+</div>
+    <div class="bg-light text-center rounded p-4" id="printAll1">
 
         <div class="d-flex align-items-center justify-content-between mb-4">
             <h6 class="mb-0">Recent Sales</h6>
@@ -182,5 +202,15 @@ const chart = new google.visualization.PieChart(document.getElementById('myChart
   chart.draw(data, options);
 }
 
+function printDiv(divName) {
+        var printContents = document.getElementById(divName).innerHTML;
+        var originalContents = document.body.innerHTML;
 
+        document.body.innerHTML = printContents;
+
+        window.print();
+
+        document.body.innerHTML = originalContents;
+
+}
 </script>
