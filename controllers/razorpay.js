@@ -5,8 +5,8 @@ const crypto = require("crypto");
 require("dotenv").config(); //env file requiring
 
 var instance = new Razorpay({
-  key_id: "rzp_test_7kdoBr9Jk8LB4t",
-  key_secret: "PngTZdm0dQ4ExuCFEZYAKQNU",
+  key_id: process.env.RAZOR_KEYID,
+  key_secret:process.env.RAZOR_SECRET
 });
 
 module.exports = {
