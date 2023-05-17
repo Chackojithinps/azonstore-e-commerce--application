@@ -72,12 +72,14 @@
 
                                                 <span>Signin</span></a>
                                         </li>
+                                        {{#if isUser}}
                                         <li>
 
                                             <a href="signout"><i class="fas fa-lock-open u-s-m-r-6"></i>
 
                                                 <span>Signout</span></a>
                                         </li>
+                                        {{/if}}
                                     </ul>
                                     <!--====== End - Dropdown ======-->
                                 </li>
@@ -1355,10 +1357,10 @@
                                     <a href="wishlist.html"><i class="far fa-heart"></i></a>
                                 </li>
                                 <li>
-
                                     <a href="cart" class="mini-cart-shop-link"><i class="fas fa-shopping-bag"></i>
-
-                                        {{!-- <span class="total-item-round">2</span></a> --}}
+                                  {{#if isUser}}
+                                        <span class="total-item-round">2</span></a>
+                                   {{/if}}
 
                                     <!--====== Dropdown ======-->
 
