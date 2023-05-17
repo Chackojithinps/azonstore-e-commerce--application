@@ -1,0 +1,67 @@
+<section class="d-flex justify-content-center">
+    <div class="col-sm-12 col-xl-6 mt-5 text-center ">
+        <form action="/addCoupon" method="post">
+            <div class="bg-light rounded h-100 p-4">
+                <h6 class="mb-4">Add Coupon</h6>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" required name="name"
+                        placeholder="Coupon name">
+                    <label for="floatingInput">Coupon Name</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" required name="code"
+                        placeholder="Coupon code">
+                    <label for="floatingInput">Coupon code</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="number" class="form-control" id="floatingInput" required name="discount"
+                        placeholder="discount">
+                    <label for="floatingInput">Discount %</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="number" class="form-control" id="floatingInput" required name="minamount"
+                        placeholder="Minimum amount">
+                    <label for="floatingInput">Minimum Amount</label>
+                </div>
+                 <div class="form-floating mb-3">
+                    <input type="number" class="form-control" id="floatingInput" required name="maxamount"
+                        placeholder="Maximum amount">
+                    <label for="floatingInput">Maximum Discount</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="number" class="form-control" id="floatingInput" required name="couponlimit"
+                        placeholder="Coupon limit">
+                    <label for="floatingInput">Coupon limit</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="date" class="form-control" id="floatingInput" required name="expiryDate"
+                        placeholder="Date">
+                    <label for="floatingInput">Date</label>
+                </div>
+
+                <button type="submit" class="btn btn-primary mt-3 w-100">Submit</button>
+            </div>
+        </form>
+    </div>
+</section>
+<!-- Content End -->
+
+
+<!-- Back to Top -->
+<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const inputField = document.getElementById("floatingInput");
+  inputField.addEventListener("change", function() {
+    const date = moment(inputField.value);
+    if (!date.isValid()) {
+      console.log("Invalid date");
+    } else {
+      const formattedDate = date.format("YYYY-MM-DD");
+      console.log(formattedDate);
+    }
+  });
+});
+</script>

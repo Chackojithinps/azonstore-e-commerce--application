@@ -1,0 +1,51 @@
+ {{!-- --------------------------------------}}
+    <!--====== Google Analytics: change UA-XXXXX-Y to be your site's ID ======-->
+    {{#if login}}
+    <script src="/javascript/js/validation.js"></script>
+    {{/if}}
+    {{#if otp}}
+    <script src="javascript/js/otp.js"></script>
+    {{/if}}
+    <script>
+        window.ga = function() {
+            ga.q.push(arguments)
+        };
+        ga.q = [];
+        ga.l = +new Date;
+        ga('create', 'UA-XXXXX-Y', 'auto');
+        ga('send', 'pageview')
+    </script>
+    <script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+    <!--====== Vendor Js ======-->
+    <script src="/javascript/js/vendor.js"></script>
+
+
+    {{!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> --}}
+
+
+    {{!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
+
+    <!--====== jQuery Shopnav plugin ======-->
+    <script src="/javascript/js/jquery.shopnav.js"></script>
+
+    <!--====== App ======-->
+    <script src="/javascript/js/app.js"></script>
+    <script src="https://kit.fontawesome.com/ed98e4680a.js" crossorigin="anonymous"></script>
+    
+    <!--====== Noscript ======-->
+    <noscript>
+        <div class="app-setting">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="app-setting__wrap">
+                            <h1 class="app-setting__h1">JavaScript is disabled in your browser.</h1>
+
+                            <span class="app-setting__text">Please enable JavaScript in your browser or upgrade to a JavaScript-capable browser.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </noscript>

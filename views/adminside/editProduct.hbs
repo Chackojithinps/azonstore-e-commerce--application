@@ -1,0 +1,99 @@
+<section class="d-flex justify-content-center">
+    <div class="col-sm-12 col-xl-6 mt-5 text-center ">
+        <form action="editProduct" method="post" enctype="multipart/form-data">
+            <div class="bg-light rounded h-100 p-4">
+                <h6 class="mb-4">Edit Product</h6>
+                <div class="form-floating mb-4">
+                    <input type="text" class="form-control" id="floatingInput" required name="name"
+                        value="{{productData.name}}">
+                    <label for="floatingInput">Product Name</label>
+                </div>
+                <div class="form-floating mb-4">
+                    <input type="text" class="form-control" id="floatingInput" required name="brand"
+                        value="{{productData.bname}}">
+                    <label for="floatingInput">Brand Name</label>
+                </div>
+                <div class="form-floating mb-4">
+                    <input type="number" class="form-control" id="floatingInput" required name="price"
+                        value="{{productData.price}}">
+                    <label for="floatingInput">Price</label>
+                </div>
+                <div class="form-floating mb-4">
+                    <input type="number" class="form-control" id="floatingInput" required name="quantity"
+                        value="{{productData.quantity}}">
+                    <label for="floatingInput">Quantity</label>
+                </div>
+
+                <div class=" form-floating mb-3 edit-images d-flex align-items-center justify-content-center">
+                   
+                    {{#with productData}}
+
+                    {{#each image}}
+                    <div class="d-flex flex-column editImage mb-2 ms-2">
+                        <img class="edit-image mb-1" src="http://res.cloudinary.com/dmuikdem0/image/upload/v1684072203/{{this}}.jpg">
+
+                        <a href="/deleteProductImage?id={{@root.productData._id}}&imageId={{this}}"
+                            class="table-link danger">
+                            <span class="fa-stack">
+                                <i class="fa fa-square fa-stack-2x"></i>
+                                <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </div>
+                    {{/each}}
+                    {{/with}}
+
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="file" class="form-control" multiple id="floatingInput" name="image"
+                        placeholder="Product img">
+                    <label for="floatingInput">Image</label>
+                </div>
+
+                <div class="form-floating mb-4">
+                    <select class="form-select" id="floatingSelect" name="category"
+                        aria-label="Floating label select example">
+                        <option selected>{{productData.category.name}}</option>
+                        {{#each categoryData}}
+                        <option value="{{name}}">{{name}}</option>
+                        {{/each}}
+                    </select>
+                    <label for="floatingSelect">select Category</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <textarea class="form-control" id="floatingTextarea" name="description"
+                        style="height: 80px;">{{productData.description}}</textarea>
+                    <label for="floatingTextarea">Description</label>
+                </div>
+                <div class="form-floating mb-4">
+                    <input type="hidden" class="form-control" id="floatingInput" required name="id"
+                        value="{{productData._id}}">
+                </div>
+                <button type="submit" class="btn btn-primary mt-3">Submit</button>
+            </div>
+        </form>
+    </div>
+
+</section>
+<!-- Content End -->
+
+
+<!-- Back to Top -->
+<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+</div>
+
+{{!-- <script>
+function fileValidation() {
+  var fileInput = document.getElementById('floatingInput1');
+  var filePath = fileInput.value;
+  var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+  if (!allowedExtensions.exec(filePath)) {
+    document.getElementById("error-message1").innerHTML = "Please upload file having extensions .jpeg/.jpg/.png/.gif only."
+    fileInput.value = '';
+    return false;
+  } else {
+    document.getElementById("error-message1").innerHTML = "";
+    return true;
+  }
+}
+</script> --}}

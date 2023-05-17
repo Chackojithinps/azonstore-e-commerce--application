@@ -1,0 +1,71 @@
+<section class="d-flex justify-content-center">
+    <div class="col-sm-12 col-xl-6 mt-5 text-center ">
+        <form action="addBanner" method="post" enctype="multipart/form-data">
+            <div class="bg-light rounded h-100 p-4">
+                <h6 class="mb-4">Add Banner</h6>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" required name="header"
+                        placeholder="Banner Header">
+                    <label for="floatingInput">Banner Header</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" required name="highlight"
+                        placeholder="Banner Header">
+                    <label for="floatingInput">Banner Highlight</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" required name="description"
+                        placeholder="Banner Header">
+                    <label for="floatingInput">Banner Description</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="file" class="form-control" id="floatingInput1" required name="image"
+                        placeholder="Product img" onchange="return fileValidation()" accept="image/*">
+                    <label for="floatingInput">Image</label>
+                     <div id="error-message1" style="color:red" class="text-center"></div>
+                </div>
+                {{!-- <div class="form-floating mb-3">
+                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="description"
+                        style="height: 80px;"></textarea>
+                    <label for="floatingTextarea">Description</label>
+                </div> --}}
+                
+               
+                <div class="form-floating mb-3">
+                    <select class="form-select" id="floatingSelect" name="type"
+                        aria-label="Floating label select example">
+                        <option selected>Open this select menu</option>
+                        
+                        <option value="Larger">Larger</option>
+                        <option value="Smaller">Smaller</option>
+                        
+                    </select>
+                    <label for="floatingSelect">select Bannert type</label>
+                </div>
+
+                <button type="submit" class="btn btn-primary mt-3 w-100">Submit</button>
+            </div>
+        </form>
+    </div>
+</section>
+<!-- Content End -->
+
+
+<!-- Back to Top -->
+<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+</div>
+<script>
+function fileValidation() {
+  var fileInput = document.getElementById('floatingInput1');
+  var filePath = fileInput.value;
+  var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+  if (!allowedExtensions.exec(filePath)) {
+    document.getElementById("error-message1").innerHTML = "Please upload file having extensions .jpeg/.jpg/.png/.gif only."
+    fileInput.value = '';
+    return false;
+  } else {
+    document.getElementById("error-message1").innerHTML = "";
+    return true;
+  }
+}
+</script>

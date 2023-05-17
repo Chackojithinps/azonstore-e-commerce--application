@@ -1,0 +1,781 @@
+<style>
+    .active{
+  color: red;
+}
+</style>
+<!--====== App Content ======-->
+<div class="app-content">
+
+    <!--====== Section 1 ======-->
+    <div class="u-s-p-y-90">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-12">
+                    <div class="shop-w-master">
+                        <h1 class="shop-w-master__heading u-s-m-b-30"><i class="fas fa-filter u-s-m-r-8"></i>
+
+                            <span>FILTERS</span>
+                        </h1>
+                        <div class="shop-w-master__sidebar sidebar--bg-snow">
+                            <div class="u-s-m-b-30">
+                                <div class="shop-w">
+                                    <div class="shop-w__intro-wrap">
+                                        <h1 class="shop-w__h">CATEGORY</h1>
+
+
+                                    </div>
+                                   <div>
+                                        <ul class="ul-category">
+                                                {{#each categoryData}}
+                                                <li id="{{this._id}}">
+                                                    <a class="category-link" href="?categoryId={{_id}}" data-category-id="{{_id}}">{{this.name}}</a>
+                                                </li>
+                                                {{/each}}
+
+
+											{{!-- <h4 class="panel-title">
+												<a href="?categoryId={{_id}}&search={{search}}" class="category-link"
+													data-category-id="{{_id}}">
+													<h6>{{name}}</h6>
+												</a>
+											</h4>
+											{{/each} --}}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="u-s-m-b-30">
+                                <div class="shop-w">
+                                    <div class="shop-w__intro-wrap">
+                                        <h1 class="shop-w__h">PRICE</h1>
+
+
+                                    </div>
+                                    {{!-- <div class="shop-w__wrap collapse show" id="s-price">
+                                        <ul>
+
+                                            <li>
+
+                                                <a href="?minAmount=0&maxAmount=499&sortValue={{sortValue}}&categoryId={{categoryId}}"
+                                                    class="shopColor">Under
+                                                    500</a>
+                                            </li>
+                                            <li>
+                                                <a href="?minAmount=500&maxAmount=1999&sortValue={{sortValue}}&categoryId={{categoryId}}"
+                                                    class="shopColor">Rs
+                                                    500.00 - Rs 1999.00</a>
+                                            </li>
+                                            <li>
+                                                <a href="?minAmount=2000&maxAmount=5999&sortValue={{sortValue}}&categoryId={{categoryId}}"
+                                                    class="shopColor">Rs
+                                                    2000.00 - Rs 5999.00</a>
+                                            </li>
+                                            <li>
+                                                <a href="?minAmount=6000&maxAmount=35999&sortValue={{sortValue}}&categoryId={{categoryId}}"
+                                                    class="shopColor">Rs
+                                                    6000.00 - Rs 35999.00</a>
+                                            </li>
+                                            <li>
+                                                <a href="?minAmount=36000&maxAmount=49999&sortValue={{sortValue}}&categoryId={{categoryId}}"
+                                                    class="shopColor">Rs 36000.00 - Rs 49999.00</a>
+                                            </li>
+                                            <li>
+                                                <a href="?minAmount=50000&maxAmount=100000&sortValue={{sortValue}}&categoryId={{categoryId}}"
+                                                    class="shopColor">Rs 50000.00 - Rs 100000.00</a>
+                                            </li>
+                                            <li>
+                                                <a href="?minAmount=100000&maxAmount=1000000&sortValue={{sortValue}}&categoryId={{categoryId}}"
+                                                    class="shopColor">Above 100000</a>
+                                            </li>
+                                        </ul>
+                                    </div> --}}
+   <div class="shop-w__wrap collapse show" id="s-price">
+  <ul>
+    <li>
+      <a href="?minAmount=0&maxAmount=499&sortValue={{sortValue}}&categoryId={{categoryId}}" id="{{categoryId}}" class="shopColor {{#if (eq maxAmount 499) }}active{{/if}}">Under 500</a>
+    </li>
+    <li>
+      <a href="?minAmount=500&maxAmount=1999&sortValue={{sortValue}}&categoryId={{categoryId}}" id="{{categoryId}}" class="shopColor {{#if (eq minAmount 500) }}active{{/if}}">Rs 500.00 - Rs 1999.00</a>
+    </li>
+    <li>
+      <a href="?minAmount=2000&maxAmount=5999&sortValue={{sortValue}}&categoryId={{categoryId}}" id="{{categoryId}}" class="shopColor {{#if (eq minAmount 2000) }}active{{/if}}">Rs 2000.00 - Rs 5999.00</a>
+    </li>
+    <li>
+      <a href="?minAmount=6000&maxAmount=35999&sortValue={{sortValue}}&categoryId={{categoryId}}" id="{{categoryId}}" class="shopColor {{#if (eq minAmount 6000) }}active{{/if}}">Rs 6000.00 - Rs 35999.00</a>
+    </li>
+    <li>
+      <a href="?minAmount=36000&maxAmount=49999&sortValue={{sortValue}}&categoryId={{categoryId}}" id="{{categoryId}}" class="shopColor {{#if (eq minAmount 36000) }}active{{/if}}">Rs 36000.00 - Rs 49999.00</a>
+    </li>
+    <li>
+      <a href="?minAmount=50000&maxAmount=100000&sortValue={{sortValue}}&categoryId={{categoryId}}" id="{{categoryId}}" class="shopColor {{#if (eq minAmount 50000) }}active{{/if}}">Rs 50000.00 - Rs 100000.00</a>
+    </li>
+    <li>
+      <a href="?minAmount=100000&maxAmount=1000000&sortValue={{sortValue}}&categoryId={{categoryId}}" id="{{categoryId}}" class="shopColor {{#if (eq minAmount 100000) }}active{{/if}}">Above 100000</a>
+    </li>
+  </ul>
+</div>
+
+
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-9 col-md-12">
+                    <div class="shop-p">
+                        <div class="shop-p__toolbar u-s-m-b-30" style="display:flex;justify-content:space-between">
+
+                            <div class="shop-p__tool-style">
+                                <div class="tool-style__group u-s-m-b-8">
+
+                                    <span class="js-shop-grid-target is-active">Grid</span>
+
+                                    <span class="js-shop-list-target">List</span>
+                                </div>
+                            </div>
+                            <form>
+                                <div class="tool-style__form-wrap">
+                                    {{!-- <div class="u-s-m-b-8"><select class="select-box select-box--transparent-b-2">
+                                            <option>Show: 8</option>
+                                            <option selected>Show: 12</option>
+                                            <option>Show: 16</option>
+                                            <option>Show: 28</option>
+                                        </select></div> --}}
+                                    <div class="u-s-m-b-8">
+                                        <select class="select-box select-box--transparent-b-2"
+                                            onchange="sortProducts(this.value)">
+                                            <option selected>Sort By:</option>
+                                            <option
+                                                value="?sortValue=1&categoryId={{categoryId}}&minPrice={{minPrice}}&maxPrice={{maxPrice}}">
+                                                Sort By: Lowest Price</option>
+                                            <option
+                                                value="?sortValue=-1&categoryId={{categoryId}}&minPrice={{minPrice}}&maxPrice={{maxPrice}}">
+                                                Sort By: Highest Price</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="shop-p__collection">
+                            <div class="row is-grid-active">
+                                {{#each productData}}
+                                <div class="col-lg-4 col-md-6 col-sm-6">
+                                    <div class="product-m">
+                                        <div class="product-m__thumb">
+
+                                            <a class="aspect aspect--bg-grey aspect--square u-d-block"
+                                                href="singleProduct?id={{this._id}}">
+
+                                                <img class="aspect__img" src="http://res.cloudinary.com/dmuikdem0/image/upload/v1684072203/{{image.[0]}}.jpg"
+                                                    alt=""></a>
+                                            <div class="product-m__quick-look">
+
+                                                <a class="fas fa-search" data-modal="modal" data-modal-id="#quick-look"
+                                                    data-tooltip="tooltip" data-placement="top" title="Quick Look"></a>
+                                            </div>
+                                            <div class="product-m__add-cart">
+
+                                                <a class="btn--e-brand" data-modal="modal"
+                                                    onclick="addToCart('{{this._id}}')">Add to Cart</a>
+                                            </div>
+                                        </div>
+                                        <div class="product-m__content">
+                                            <div class="product-m__category">
+
+                                                <a href="shop-side-version-2.html">{{this.category}}</a>
+                                            </div>
+                                            <div class="product-m__name">
+
+                                                <a href="singleProduct?id={{this._id}}">{{this.name}}</a>
+                                            </div>
+                                            <div class="product-m__rating gl-rating-style"><i class="fas fa-star"></i><i
+                                                    class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i
+                                                    class="far fa-star"></i><i class="far fa-star"></i>
+
+                                                <span class="product-m__review">(23)</span>
+                                            </div>
+                                            <div class="product-m__price" style="color:red">₹{{this.price}}</div>
+                                            <div class="product-m__hover">
+                                                <div class="product-m__preview-description">
+
+                                                    <span>{{this.description}}</span>
+                                                </div>
+                                                <div class="product-m__wishlist">
+
+                                                    <a class="far fa-heart" href="#" data-tooltip="tooltip"
+                                                        data-placement="top" title="Add to Wishlist"></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{/each}}
+                            </div>
+                        </div>
+                        <div class="u-s-p-y-60">
+
+                            <!--====== Pagination ======-->
+                            {{!-- <ul class="shop-p__pagination">
+                                <li class="is-active">
+                                    for(let i=1;i<=pages;i++){ <a href="shop?page=i">i</a>
+                                        }
+                                </li>
+
+                            </ul> --}}
+                            <ul class="shop-p__pagination">
+                                {{#each pageNumbers}}
+                                <li>
+                                    {{!-- {{#if (currentPage==this)}}
+                                    class="is-active"
+                                    {{/if}}> --}}
+                                    <a href="/shop?page={{this}}">{{this}}</a>
+                                </li>
+                                {{/each}}
+                            </ul>
+                            <!--====== End - Pagination ======-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--====== End - Section 1 ======-->
+</div>
+<!--====== End - App Content ======-->
+
+
+<!--====== Main Footer ======-->
+<footer>
+    <div class="outer-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="outer-footer__content u-s-m-b-40">
+
+                        <span class="outer-footer__content-title">Contact Us</span>
+                        <div class="outer-footer__text-wrap"><i class="fas fa-home"></i>
+
+                            <span>4247 Ashford Drive Virginia VA-20006 USA</span>
+                        </div>
+                        <div class="outer-footer__text-wrap"><i class="fas fa-phone-volume"></i>
+
+                            <span>(+0) 900 901 904</span>
+                        </div>
+                        <div class="outer-footer__text-wrap"><i class="far fa-envelope"></i>
+
+                            <span>contact@domain.com</span>
+                        </div>
+                        <div class="outer-footer__social">
+                            <ul>
+                                <li>
+
+                                    <a class="s-fb--color-hover" href="#"><i class="fab fa-facebook-f"></i></a>
+                                </li>
+                                <li>
+
+                                    <a class="s-tw--color-hover" href="#"><i class="fab fa-twitter"></i></a>
+                                </li>
+                                <li>
+
+                                    <a class="s-youtube--color-hover" href="#"><i class="fab fa-youtube"></i></a>
+                                </li>
+                                <li>
+
+                                    <a class="s-insta--color-hover" href="#"><i class="fab fa-instagram"></i></a>
+                                </li>
+                                <li>
+
+                                    <a class="s-gplus--color-hover" href="#"><i class="fab fa-google-plus-g"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <div class="outer-footer__content u-s-m-b-40">
+
+                                <span class="outer-footer__content-title">Information</span>
+                                <div class="outer-footer__list-wrap">
+                                    <ul>
+                                        <li>
+
+                                            <a href="cart.html">Cart</a>
+                                        </li>
+                                        <li>
+
+                                            <a href="dashboard.html">Account</a>
+                                        </li>
+                                        <li>
+
+                                            <a href="shop-side-version-2.html">Manufacturer</a>
+                                        </li>
+                                        <li>
+
+                                            <a href="dash-payment-option.html">Finance</a>
+                                        </li>
+                                        <li>
+
+                                            <a href="shop-side-version-2.html">Shop</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <div class="outer-footer__content u-s-m-b-40">
+                                <div class="outer-footer__list-wrap">
+
+                                    <span class="outer-footer__content-title">Our Company</span>
+                                    <ul>
+                                        <li>
+
+                                            <a href="about.html">About us</a>
+                                        </li>
+                                        <li>
+
+                                            <a href="contact.html">Contact Us</a>
+                                        </li>
+                                        <li>
+
+                                            <a href="index.html">Sitemap</a>
+                                        </li>
+                                        <li>
+
+                                            <a href="dash-my-order.html">Delivery</a>
+                                        </li>
+                                        <li>
+
+                                            <a href="shop-side-version-2.html">Store</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    <div class="outer-footer__content">
+
+                        <span class="outer-footer__content-title">Join our Newsletter</span>
+                        <form class="newsletter">
+                            <div class="u-s-m-b-15">
+                                <div class="radio-box newsletter__radio">
+
+                                    <input type="radio" id="male" name="gender">
+                                    <div class="radio-box__state radio-box__state--primary">
+
+                                        <label class="radio-box__label" for="male">Male</label>
+                                    </div>
+                                </div>
+                                <div class="radio-box newsletter__radio">
+
+                                    <input type="radio" id="female" name="gender">
+                                    <div class="radio-box__state radio-box__state--primary">
+
+                                        <label class="radio-box__label" for="female">Female</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="newsletter__group">
+
+                                <label for="newsletter"></label>
+
+                                <input class="input-text input-text--only-white" type="text" id="newsletter"
+                                    placeholder="Enter your Email">
+
+                                <button class="btn btn--e-brand newsletter__btn" type="submit">SUBSCRIBE</button>
+                            </div>
+
+                            <span class="newsletter__text">Subscribe to the mailing list to receive updates on
+                                promotions, new arrivals, discount and coupons.</span>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="lower-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="lower-footer__content">
+                        <div class="lower-footer__copyright">
+
+                            <span>Copyright © 2018</span>
+
+                            <a href="index.html">Reshop</a>
+
+                            <span>All Right Reserved</span>
+                        </div>
+                        <div class="lower-footer__payment">
+                            <ul>
+                                <li><i class="fab fa-cc-stripe"></i></li>
+                                <li><i class="fab fa-cc-paypal"></i></li>
+                                <li><i class="fab fa-cc-mastercard"></i></li>
+                                <li><i class="fab fa-cc-visa"></i></li>
+                                <li><i class="fab fa-cc-discover"></i></li>
+                                <li><i class="fab fa-cc-amex"></i></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!--====== Modal Section ======-->
+
+
+<!--====== Quick Look Modal ======-->
+<div class="modal fade" id="quick-look">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content modal--shadow">
+
+            <button class="btn dismiss-button fas fa-times" type="button" data-dismiss="modal"></button>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-5">
+
+                        <!--====== Product Breadcrumb ======-->
+                        <div class="pd-breadcrumb u-s-m-b-30">
+                            <ul class="pd-breadcrumb__list">
+                                <li class="has-separator">
+
+                                    <a href="index.hml">Home</a>
+                                </li>
+                                <li class="has-separator">
+
+                                    <a href="shop-side-version-2.html">Electronics</a>
+                                </li>
+                                <li class="has-separator">
+
+                                    <a href="shop-side-version-2.html">DSLR Cameras</a>
+                                </li>
+                                <li class="is-marked">
+
+                                    <a href="shop-side-version-2.html">Nikon Cameras</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!--====== End - Product Breadcrumb ======-->
+
+
+                        <!--====== Product Detail ======-->
+                        <div class="pd u-s-m-b-30">
+                            <div class="pd-wrap">
+                                <div id="js-product-detail-modal">
+                                    <div>
+
+                                        <img class="u-img-fluid" src="images/product/product-d-1.jpg" alt="">
+                                    </div>
+                                    <div>
+
+                                        <img class="u-img-fluid" src="images/product/product-d-2.jpg" alt="">
+                                    </div>
+                                    <div>
+
+                                        <img class="u-img-fluid" src="images/product/product-d-3.jpg" alt="">
+                                    </div>
+                                    <div>
+
+                                        <img class="u-img-fluid" src="images/product/product-d-4.jpg" alt="">
+                                    </div>
+                                    <div>
+
+                                        <img class="u-img-fluid" src="images/product/product-d-5.jpg" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="u-s-m-t-15">
+                                <div id="js-product-detail-modal-thumbnail">
+                                    <div>
+
+                                        <img class="u-img-fluid" src="images/product/product-d-1.jpg" alt="">
+                                    </div>
+                                    <div>
+
+                                        <img class="u-img-fluid" src="images/product/product-d-2.jpg" alt="">
+                                    </div>
+                                    <div>
+
+                                        <img class="u-img-fluid" src="images/product/product-d-3.jpg" alt="">
+                                    </div>
+                                    <div>
+
+                                        <img class="u-img-fluid" src="images/product/product-d-4.jpg" alt="">
+                                    </div>
+                                    <div>
+
+                                        <img class="u-img-fluid" src="images/product/product-d-5.jpg" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--====== End - Product Detail ======-->
+                    </div>
+                    <div class="col-lg-7">
+
+                        <!--====== Product Right Side Details ======-->
+                        <div class="pd-detail">
+                            <div>
+
+                                <span class="pd-detail__name">Nikon Camera 4k Lens Zoom Pro</span>
+                            </div>
+                            <div>
+                                <div class="pd-detail__inline">
+
+                                    <span class="pd-detail__price">$6.99</span>
+
+                                    <span class="pd-detail__discount">(76% OFF)</span><del
+                                        class="pd-detail__del">$28.97</del>
+                                </div>
+                            </div>
+                            <div class="u-s-m-b-15">
+                                <div class="pd-detail__rating gl-rating-style"><i class="fas fa-star"></i><i
+                                        class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                        class="fas fa-star-half-alt"></i>
+
+                                    <span class="pd-detail__review u-s-m-l-4">
+
+                                        <a href="product-detail.html">23 Reviews</a></span>
+                                </div>
+                            </div>
+                            <div class="u-s-m-b-15">
+                                <div class="pd-detail__inline">
+
+                                    <span class="pd-detail__stock">200 in stock</span>
+
+                                    <span class="pd-detail__left">Only 2 left</span>
+                                </div>
+                            </div>
+                            <div class="u-s-m-b-15">
+
+                                <span class="pd-detail__preview-desc">Lorem Ipsum is simply dummy text of the printing
+                                    and typesetting industry. Lorem Ipsum has been the industry's standard dummy text
+                                    ever since the 1500s, when an unknown printer took a galley of type and scrambled it
+                                    to make a type specimen book.</span>
+                            </div>
+                            <div class="u-s-m-b-15">
+                                <div class="pd-detail__inline">
+
+                                    <span class="pd-detail__click-wrap"><i class="far fa-heart u-s-m-r-6"></i>
+
+                                        <a href="signin.html">Add to Wishlist</a>
+
+                                        <span class="pd-detail__click-count">(222)</span></span>
+                                </div>
+                            </div>
+                            <div class="u-s-m-b-15">
+                                <div class="pd-detail__inline">
+
+                                    <span class="pd-detail__click-wrap"><i class="far fa-envelope u-s-m-r-6"></i>
+
+                                        <a href="signin.html">Email me When the price drops</a>
+
+                                        <span class="pd-detail__click-count">(20)</span></span>
+                                </div>
+                            </div>
+                            <div class="u-s-m-b-15">
+                                <ul class="pd-social-list">
+                                    <li>
+
+                                        <a class="s-fb--color-hover" href="#"><i class="fab fa-facebook-f"></i></a>
+                                    </li>
+                                    <li>
+
+                                        <a class="s-tw--color-hover" href="#"><i class="fab fa-twitter"></i></a>
+                                    </li>
+                                    <li>
+
+                                        <a class="s-insta--color-hover" href="#"><i class="fab fa-instagram"></i></a>
+                                    </li>
+                                    <li>
+
+                                        <a class="s-wa--color-hover" href="#"><i class="fab fa-whatsapp"></i></a>
+                                    </li>
+                                    <li>
+
+                                        <a class="s-gplus--color-hover" href="#"><i
+                                                class="fab fa-google-plus-g"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="u-s-m-b-15">
+                                <form class="pd-detail__form">
+                                    <div class="pd-detail-inline-2">
+                                        <div class="u-s-m-b-15">
+
+                                            <!--====== Input Counter ======-->
+                                            <div class="input-counter">
+
+                                                <span class="input-counter__minus fas fa-minus"></span>
+
+                                                <input class="input-counter__text input-counter--text-primary-style"
+                                                    type="text" value="1" data-min="1" data-max="1000">
+
+                                                <span class="input-counter__plus fas fa-plus"></span>
+                                            </div>
+                                            <!--====== End - Input Counter ======-->
+                                        </div>
+                                        <div class="u-s-m-b-15">
+
+                                            <button class="btn btn--e-brand-b-2" type="submit">Add to Cart</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="u-s-m-b-15">
+
+                                <span class="pd-detail__label u-s-m-b-8">Product Policy:</span>
+                                <ul class="pd-detail__policy-list">
+                                    <li><i class="fas fa-check-circle u-s-m-r-8"></i>
+
+                                        <span>Buyer Protection.</span>
+                                    </li>
+                                    <li><i class="fas fa-check-circle u-s-m-r-8"></i>
+
+                                        <span>Full Refund if you don't receive your order.</span>
+                                    </li>
+                                    <li><i class="fas fa-check-circle u-s-m-r-8"></i>
+
+                                        <span>Returns accepted if product not as described.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!--====== End - Product Right Side Details ======-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--====== End - Quick Look Modal ======-->
+
+
+<!--====== Add to Cart Modal ======-->
+<div class="modal fade" id="add-to-cart">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content modal-radius modal-shadow">
+
+            <button class="btn dismiss-button fas fa-times" type="button" data-dismiss="modal"></button>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-6 col-md-12">
+                        <div class="success u-s-m-b-30">
+                            <div class="success__text-wrap"><i class="fas fa-check"></i>
+
+                                <span>Item is added successfully!</span>
+                            </div>
+                            <div class="success__img-wrap">
+
+                                <img class="u-img-fluid" src="images/product/electronic/product1.jpg" alt="">
+                            </div>
+                            <div class="success__info-wrap">
+
+                                <span class="success__name">Beats Bomb Wireless Headphone</span>
+
+                                <span class="success__quantity">Quantity: 1</span>
+
+                                <span class="success__price">$170.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="s-option">
+
+                            <span class="s-option__text">1 item (s) in your cart</span>
+                            <div class="s-option__link-box">
+
+                                <a class="s-option__link btn--e-white-brand-shadow" data-dismiss="modal">CONTINUE
+                                    SHOPPING</a>
+
+                                <a class="s-option__link btn--e-white-brand-shadow" href="cart.html">VIEW CART</a>
+
+                                <a class="s-option__link btn--e-brand-shadow" href="checkout.html">PROCEED TO
+                                    CHECKOUT</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--====== End - Add to Cart Modal ======-->
+<!--====== End - Modal Section ======-->
+</div>
+<!--====== End - Main App ======-->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script>
+    function sortProducts(url) {
+        window.location.href = url;
+    }
+
+</script>
+<script>
+
+    function addToCart(id) {
+        console.log(id)
+        $.ajax({
+            url: '/addToCart',
+            method: 'post',
+            data: {
+                productId: id,
+            },
+            success: (response) => {
+
+                if (response.msg == "success") {
+                    swal("Product added to cart!", "Please check the cart page!", "success");
+                } if (response.msg == "failed") {
+                    swal({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'the stoke limit reach!',
+                    });
+                }
+
+                error: (error) => {
+                    alert(error.message)
+                }
+            }
+        });
+    }
+
+
+			$(document).ready(function () {
+					var urlParams = new URLSearchParams(window.location.search);
+						var categoryId = urlParams.get('categoryId');
+						$('.category-link').each(function () {
+							if ($(this).data('category-id') === categoryId) {
+									$(this).css('color', 'black');
+										}
+					});
+				});
+
+
+  {{!-- $(document).ready(function() {
+    $('#s-price').on('click', 'a', function(event) {
+      event.preventDefault();
+      var categoryId = $(this).attr('id');
+      changecolor(categoryId);
+    });
+  });
+
+  function changecolor(id) {
+    console.log("Helllllllllllllllllllllllllllllllllllllllllllllll");
+    $('#' + id).css('color', 'red');
+  } --}}
+
+
+</script>

@@ -1,0 +1,70 @@
+<form action="/addCategory" method="post" class="category" >
+    
+        {{!-- <label for="exampleInputPassword1" class="form-label text-center">Add product</label> --}}
+        <div class="d-flex justify-content-center">
+            <input type="text" class="form-control category-add" name="name" id="exampleInputPassword1">
+            <button type="submit" class="category-btn">Add</button>
+        </div>
+    
+</form>
+{{#if msg}}
+<p class="text-center">{{msg}}</p>
+{{/if}}
+<div class="row g-4 mt-5 d-flex justify-content-center">
+    <div class="col-sm-12 col-xl-6">
+        <div class="bg-light rounded h-100 p-4">
+            <h6 class="mb-4">Basic Table</h6>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Category Name</th>
+                        <th scope="col">Action</th>
+                        <th scope="col">Edit</th>
+
+
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each categoryData}}
+
+                    <tr>
+                        {{!-- <th scope="row">{{@indexInc}}</th> --}}
+                     
+                        <th scope="row">{{inc @index}}</th>
+                     
+                        <td>{{this.name}}</td>
+                        {{#if status}}
+                        <td><a href="list?id={{_id}}"><button class="block-button">List</button></a></td>
+                        {{else}}
+                        <td><a href="unlist?id={{_id}}"><button class="unblock-button">Unlist</button></a></td>
+                        {{/if}}
+                         <td style="width: 20%;">
+                                  
+                                    <a href="editCategory?id={{this._id}}" class="table-link">
+                                        <span class="fa-stack">
+                                            <i class="fa fa-square fa-stack-2x"></i>
+
+                                            <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                                        </span>
+                                    </a>
+                                  
+                                </td>
+
+                    </tr>
+
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</div>
+<!-- Content End -->
+
+
+<!-- Back to Top -->
+<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+</div>
+
+{{!-- </body> --}}

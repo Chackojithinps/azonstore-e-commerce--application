@@ -1,0 +1,1067 @@
+<!--====== App Content ======-->
+<div class="app-content">
+
+    <!--====== Section 1 ======-->
+    <div class="u-s-p-y-60">
+
+        <!--====== Section Content ======-->
+        <div class="section__content">
+            <div class="container">
+                <div class="breadcrumb">
+                    <div class="breadcrumb__wrap">
+                        <ul class="breadcrumb__list">
+                            <li class="has-separator">
+
+                                <a href="/">Home</a>
+                            </li>
+                            <li class="is-marked">
+
+                                <a href="checkout">Checkout</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--====== End - Section 1 ======-->
+
+
+    <!--====== Section 2 ======-->
+    <div class="u-s-p-b-60">
+
+        <!--====== Section Content ======-->
+        <div class="section__content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div id="checkout-msg-group">
+                            {{!-- <div class="msg u-s-m-b-30">
+
+                                <span class="msg__text">Returning customer?
+
+                                    <a class="gl-link" href="#return-customer" data-toggle="collapse">Click here to
+                                        login</a></span>
+                                <div class="collapse" id="return-customer" data-parent="#checkout-msg-group">
+                                    <div class="l-f u-s-m-b-16">
+
+                                        <span class="gl-text u-s-m-b-16">If you have an account with us, please log
+                                            in.</span>
+                                        <form class="l-f__form">
+                                            <div class="gl-inline">
+                                                <div class="u-s-m-b-15">
+
+                                                    <label class="gl-label" for="login-email">E-MAIL *</label>
+
+                                                    <input class="input-text input-text--primary-style" type="text"
+                                                        id="login-email" placeholder="Enter E-mail">
+                                                </div>
+                                                <div class="u-s-m-b-15">
+
+                                                    <label class="gl-label" for="login-password">PASSWORD *</label>
+
+                                                    <input class="input-text input-text--primary-style" type="text"
+                                                        id="login-password" placeholder="Enter Password">
+                                                </div>
+                                            </div>
+                                            <div class="gl-inline">
+                                                <div class="u-s-m-b-15">
+
+                                                    <button class="btn btn--e-transparent-brand-b-2"
+                                                        type="submit">LOGIN</button>
+                                                </div>
+                                                <div class="u-s-m-b-15">
+
+                                                    <a class="gl-link" href="lost-password.html">Lost Your Password?</a>
+                                                </div>
+                                            </div>
+
+                                            <!--====== Check Box ======-->
+                                            <div class="check-box">
+
+                                                <input type="checkbox" id="remember-me">
+                                                <div class="check-box__state check-box__state--primary">
+
+                                                    <label class="check-box__label" for="remember-me">Remember
+                                                        Me</label>
+                                                </div>
+                                            </div>
+                                            <!--====== End - Check Box ======-->
+                                        </form>
+                                    </div>
+                                </div>
+                            </div> --}}
+                            <div class="msg">
+
+                                <span class="msg__text">Have a coupon?
+
+                                    {{!-- <a class="gl-link" href="#have-coupon" data-toggle="collapse">Click Here to
+                                        enter your code</a></span>
+                                <div class="collapse" id="have-coupon" data-parent="#checkout-msg-group"> --}}
+                                    <div class="c-f u-s-m-b-16">
+
+                                        <span class="gl-text u-s-m-b-16">Enter your coupon code if you have one.</span>
+
+                                        <form class="c-f__form" action="/couponsubmit" method="post">
+                                            <div class="u-s-m-b-16">
+                                                <div class="u-s-m-b-15">
+
+                                                    <label for="coupon"></label>
+
+                                                    <input class="input-text input-text--primary-style" type="text"
+                                                        id="coupon" placeholder="Coupon Code" name="couponCode">
+                                                    {{#if msg}}
+
+                                                    <p class="text-danger coupon-failed">{{this.msg}}</p>
+
+                                                    {{/if}}
+                                                    {{#if msg1}}
+
+                                                    <p class="text-success coupon-failed">{{this.msg1}}</p>
+
+                                                    {{/if}}
+                                                </div>
+                                                {{!-- <div class="u-s-m-b-15"> --}}
+
+                                                    <button class="btn btn--e-transparent-brand-b-2"
+                                                        type="submit">APPLY</button>
+                                                    {{!--
+                                                </div> --}}
+                                            </div>
+                                        </form>
+                                        <a href="checkout"><span class="text-danger"
+                                                style="color:rgb(255, 98, 0)">Remove coupon</span></a>
+
+                                    </div>
+                                    {{!--
+                                </div> --}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--====== End - Section Content ======-->
+    </div>
+    <!--====== End - Section 2 ======-->
+
+
+    <!--====== Section 3 ======-->
+    <div class="u-s-p-b-60">
+
+        <!--====== Section Content ======-->
+        <div class="section__content">
+            <div class="container">
+                <div class="checkout-f">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <h1 class="checkout-f__h1">DELIVERY INFORMATION</h1>
+                            <form class="checkout-f__delivery" action="deliveryInfo" method="post">
+                                <div class="u-s-m-b-30">
+                                    <div class="u-s-m-b-15">
+
+                                        <!--====== Check Box ======-->
+                                        <div class="check-box">
+
+                                            <input type="checkbox" id="get-address">
+                                            <div class="check-box__state check-box__state--primary">
+
+                                                <label class="check-box__label" for="get-address">Use default shipping
+                                                    and billing address from account</label>
+                                            </div>
+                                        </div>
+                                        <!--====== End - Check Box ======-->
+                                    </div>
+
+                                    <!--====== First Name, Last Name ======-->
+                                    <div class="gl-inline">
+                                        <div class="u-s-m-b-15">
+
+                                            <label class="gl-label" for="billing-fname">FIRST NAME *</label>
+
+                                            <input class="input-text input-text--primary-style" type="text"
+                                                name="firstname" id="billing-fname" value="{{addressData.firstname}}"
+                                                data-bill="">
+                                        </div>
+                                        <div class="u-s-m-b-15">
+
+                                            <label class="gl-label" for="billing-lname">LAST NAME *</label>
+
+                                            <input class="input-text input-text--primary-style"
+                                                value="{{addressData.lastname}}" type="text" name="lastname"
+                                                id="billing-lname" data-bill="">
+                                        </div>
+                                    </div>
+                                    <!--====== End - First Name, Last Name ======-->
+
+
+                                    <!--====== E-MAIL ======-->
+                                    <div class="u-s-m-b-15">
+
+                                        <label class="gl-label" for="billing-email">E-MAIL *</label>
+
+                                        <input class="input-text input-text--primary-style"
+                                            value="{{addressData.email}}" type="email" id="billing-email" name="email"
+                                            data-bill="">
+                                    </div>
+                                    <!--====== End - E-MAIL ======-->
+
+
+                                    <!--====== PHONE ======-->
+                                    <div class="u-s-m-b-15">
+
+                                        <label class="gl-label" for="billing-phone">PHONE *</label>
+
+                                        <input class="input-text input-text--primary-style" type="text"
+                                            value="{{addressData.phone}}" name="phone" id="billing-phone" data-bill="">
+                                    </div>
+                                    <!--====== End - PHONE ======-->
+
+
+                                    <!--====== Street Address ======-->
+                                    <div class="u-s-m-b-15">
+
+                                        <label class="gl-label" for="billing-street">STREET ADDRESS *</label>
+
+                                        <input class="input-text input-text--primary-style" type="text" name="street"
+                                            value="{{addressData.street}}" id="billing-street"
+                                            placeholder="House name and street name" data-bill="">
+                                    </div>
+                                    {{!-- <div class="u-s-m-b-15">
+
+                                        <label for="billing-street-optional"></label>
+
+                                        <input class="input-text input-text--primary-style" type="text"
+                                            id="billing-street-optional"
+                                            placeholder="Apartment, suite unit etc. (optional)" data-bill="">
+                                    </div> --}}
+                                    <!--====== End - Street Address ======-->
+
+
+                                    <!--====== Country ======-->
+                                    <div class="u-s-m-b-15">
+
+                                        <!--====== Select Box ======-->
+
+                                        <label class="gl-label" for="billing-country">COUNTRY *</label>
+                                        <select class="select-box select-box--primary-style" id="billing-country"
+                                            data-bill="" name="country">
+                                            <option selected value="">{{addressData.country}}</option>
+                                            <option value="United Arab Emirate">United Arab Emirate (UAE)</option>
+                                            <option value="United Kingdom">United Kingdom (UK)</option>
+                                            <option value="United States">United States (US)</option>
+                                            <option value="India">India (IND)</option>
+
+                                        </select>
+                                        <!--====== End - Select Box ======-->
+                                    </div>
+                                    <!--====== End - Country ======-->
+
+
+                                    <!--====== Town / City ======-->
+                                    <div class="u-s-m-b-15">
+
+                                        <label class="gl-label" for="billing-town-city">TOWN/CITY *</label>
+
+                                        <input class="input-text input-text--primary-style" type="text" name="city"
+                                            value="{{addressData.city}}" id="billing-town-city" data-bill="">
+                                    </div>
+                                    <!--====== End - Town / City ======-->
+
+
+                                    <!--====== STATE/PROVINCE ======-->
+                                    <div class="u-s-m-b-15">
+
+                                        <!--====== Select Box ======-->
+
+                                        <label class="gl-label" for="billing-state">STATE/PROVINCE *</label>
+                                        <select class="select-box select-box--primary-style" id="billing-state"
+                                            name="state" data-bill="">
+                                            <option selected value="">{{addressData.state}}</option>
+                                            <option value="Alabama">Alabama</option>
+                                            <option value="Alaska">Alaska</option>
+                                            <option value="New York">New York</option>
+                                            <option value="kerala">Kerala</option>
+
+                                        </select>
+
+                                        <!--====== End - Select Box ======-->
+                                    </div>
+                                    <!--====== End - STATE/PROVINCE ======-->
+
+
+                                    <!--====== ZIP/POSTAL ======-->
+                                    <div class="u-s-m-b-15">
+
+                                        <label class="gl-label" for="billing-zip">ZIP/POSTAL CODE *</label>
+
+                                        <input class="input-text input-text--primary-style" type="number"
+                                            value="{{addressData.pincode}}" id="billing-zip" name="pincode"
+                                            placeholder="Zip/Postal Code" data-bill="">
+                                    </div>
+                                    <!--====== End - ZIP/POSTAL ======-->
+                                    {{!-- <div class="u-s-m-b-10"> --}}
+
+                                        <!--====== Check Box ======-->
+                                        {{!-- <div class="check-box"> --}}
+
+                                            {{!-- <input type="checkbox" id="make-default-address" data-bill=""> --}}
+                                            {{!-- <div class="check-box__state check-box__state--primary"> --}}
+                                                {{!--
+                                                <label class="check-box__label" for="make-default-address">Make default
+                                                    shipping and billing address</label> --}}
+                                                {{!--
+                                            </div> --}}
+                                            {{!-- </div> --}}
+                                        <!--====== End - Check Box ======-->
+                                        {{!--
+                                    </div> --}}
+                                    {{!-- <div class="u-s-m-b-10">
+
+                                        <a class="gl-link" href="#create-account" data-toggle="collapse">Want to create
+                                            a new account?</a>
+                                    </div> --}}
+                                    <div class="dash__link dash__link--brand">
+
+                                        <a data-modal="modal" data-modal-id="#add-ship-address" data-dismiss="modal">Add
+                                            new Address</a>
+                                    </div>
+                                    <div class="collapse u-s-m-b-15" id="create-account">
+
+                                        <span class="gl-text u-s-m-b-15">Create an account by entering the information
+                                            below. If you are a returning customer please login at the top of the
+                                            page.</span>
+                                        <div>
+
+                                            <label class="gl-label" for="reg-password">Account Password *</label>
+
+                                            <input class="input-text input-text--primary-style" type="text" data-bill
+                                                id="reg-password">
+                                        </div>
+                                    </div>
+                                    {{!-- <div class="u-s-m-b-10">
+
+                                        <label class="gl-label" for="order-note">ORDER NOTE</label><textarea
+                                            class="text-area text-area--primary-style" id="order-note"></textarea>
+                                    </div> --}}
+                                    {{!-- <div>
+
+                                        <button class="btn btn--e-transparent-brand-b-2" type="submit">SAVE</button>
+                                    </div> --}}
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-lg-6">
+                            {{!-- <h1 class="checkout-f__h1">ORDER SUMMARY</h1> --}}
+
+                            <!--====== Order Summary ======-->
+                            <div class="o-summary">
+                                {{!-- <div class="o-summary__section u-s-m-b-30">
+                                    <div class="o-summary__item-wrap gl-scroll">
+                                        <div class="o-card">
+                                            <div class="o-card__flex">
+                                                <div class="o-card__img-wrap">
+
+                                                    <img class="u-img-fluid"
+                                                        src="images/product/electronic/product3.jpg" alt="">
+                                                </div>
+                                                <div class="o-card__info-wrap">
+
+                                                    <span class="o-card__name">
+
+                                                        <a href="product-detail.html">Yellow Wireless
+                                                            Headphone</a></span>
+
+                                                    <span class="o-card__quantity">Quantity x 1</span>
+
+                                                    <span class="o-card__price">$150.00</span>
+                                                </div>
+                                            </div>
+
+                                            <a class="o-card__del far fa-trash-alt"></a>
+                                        </div>
+                                        <div class="o-card">
+                                            <div class="o-card__flex">
+                                                <div class="o-card__img-wrap">
+
+                                                    <img class="u-img-fluid"
+                                                        src="images/product/electronic/product18.jpg" alt="">
+                                                </div>
+                                                <div class="o-card__info-wrap">
+
+                                                    <span class="o-card__name">
+
+                                                        <a href="product-detail.html">Nikon DSLR Camera 4k</a></span>
+
+                                                    <span class="o-card__quantity">Quantity x 1</span>
+
+                                                    <span class="o-card__price">$150.00</span>
+                                                </div>
+                                            </div>
+
+                                            <a class="o-card__del far fa-trash-alt"></a>
+                                        </div>
+                                        <div class="o-card">
+                                            <div class="o-card__flex">
+                                                <div class="o-card__img-wrap">
+
+                                                    <img class="u-img-fluid" src="images/product/women/product8.jpg"
+                                                        alt="">
+                                                </div>
+                                                <div class="o-card__info-wrap">
+
+                                                    <span class="o-card__name">
+
+                                                        <a href="product-detail.html">New Dress D Nice
+                                                            Elegant</a></span>
+
+                                                    <span class="o-card__quantity">Quantity x 1</span>
+
+                                                    <span class="o-card__price">$150.00</span>
+                                                </div>
+                                            </div>
+
+                                            <a class="o-card__del far fa-trash-alt"></a>
+                                        </div>
+                                        <div class="o-card">
+                                            <div class="o-card__flex">
+                                                <div class="o-card__img-wrap">
+
+                                                    <img class="u-img-fluid" src="images/product/men/product8.jpg"
+                                                        alt="">
+                                                </div>
+                                                <div class="o-card__info-wrap">
+
+                                                    <span class="o-card__name">
+
+                                                        <a href="product-detail.html">New Fashion D Nice
+                                                            Elegant</a></span>
+
+                                                    <span class="o-card__quantity">Quantity x 1</span>
+
+                                                    <span class="o-card__price">$150.00</span>
+                                                </div>
+                                            </div>
+
+                                            <a class="o-card__del far fa-trash-alt"></a>
+                                        </div>
+                                    </div>
+                                </div> --}}
+                                <div class="o-summary__section u-s-m-b-30">
+                                    <div class="o-summary__box">
+                                        <h1 class="checkout-f__h1">SHIPPING & BILLING</h1>
+                                        <div class="ship-b">
+
+                                            <span class="ship-b__text">Ship to:</span>
+                                            <div class="ship-b__box u-s-m-b-10">
+                                                <p class="ship-b__p">{{addressData.firstname}} {{addressData.lastname}},
+                                                    {{addressData.street}},{{addressData.city}},{{addressData.state}},
+                                                    {{addressData.country}},{{addressData.pincode}},{{addressData.phone}}
+                                                </p>
+
+                                                <a class="ship-b__edit btn--e-transparent-platinum-b-2"
+                                                    data-modal="modal" data-modal-id="#edit-ship-address">Edit</a>
+                                            </div>
+                                            {{!-- <div class="ship-b__box u-s-m-b-10">
+                                                <p class="ship-b__p">{{addressDatas.[1].firstname}}
+                                                    {{addressDatas.[1].lastname}},
+                                                    {{addressDatas.[1].street}},{{addressDatas.[1].city}},{{addressDatas.[1].state}},
+                                                    {{addressDatas.[1].country}},{{addressDatas.[1].pincode}},{{addressDatas.[1].phone}}
+                                                </p>
+
+                                                <a class="ship-b__edit btn--e-transparent-platinum-b-2"
+                                                    data-modal="modal" data-modal-id="#edit-ship-address">Edit</a>
+                                            </div> --}}
+                                            {{!-- <div class="ship-b__box">edit
+
+                                                <span class="ship-b__text">Bill to default billing address</span>
+
+                                                <a class="ship-b__edit btn--e-transparent-platinum-b-2"
+                                                    data-modal="modal" data-modal-id="#edit-ship-address">Edit</a>
+                                            </div> --}}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="o-summary__section u-s-m-b-30">
+                                    <div class="o-summary__box">
+                                        <table class="o-summary__table">
+                                            <tbody>
+                                                <tr>
+                                                    <td>SHIPPING</td>
+                                                    <td class="shipping-free">FREE</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>TAX</td>
+                                                    <td>₹0.00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>SUBTOTAL</td>
+                                                    <td>₹{{totalPrice}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Discount</td>
+                                                    <td>{{discount}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>GRAND TOTAL</td>
+                                                    <td>₹{{grandTotal}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <div class="o-summary__section u-s-m-b-30">
+                                    <div class="o-summary__box">
+                                        <h1 class="checkout-f__h1">PAYMENT INFORMATION</h1>
+                                        <form class="checkout-f__payment" action="" id="paymentInformation">
+                                            <div class="u-s-m-b-10">
+
+                                                <!--====== Radio Box ======-->
+                                                <div class="radio-box">
+
+                                                    <input type="radio" id="cash-on-delivery" name="payment"
+                                                        value="COD">
+                                                    <div class="radio-box__state radio-box__state--primary">
+
+                                                        <label class="radio-box__label" for="cash-on-delivery">Cash on
+                                                            Delivery</label>
+                                                    </div>
+                                                </div>
+                                                <!--====== End - Radio Box ======-->
+
+                                                <span class="gl-text u-s-m-t-6">Pay Upon Cash on delivery. (This service
+                                                    is only available for some countries)</span>
+                                                </div>
+                                            <div class="u-s-m-b-10">
+
+                                                <!--====== Radio Box ======-->
+                                                <div class="radio-box">
+
+                                                    <input type="radio" id="direct-bank-transfer" name="payment">
+                                                    <div class="radio-box__state radio-box__state--primary">
+
+                                                        <label class="radio-box__label"
+                                                            for="direct-bank-transfer">Online payment</label>
+                                                    </div>
+                                                </div>
+                                                <!--====== End - Radio Box ======-->
+
+                                                <span class="gl-text u-s-m-t-6">Make your payment directly into our bank
+                                                    account.</span>
+                                            </div>
+                                            <div class="u-s-m-b-10">
+
+                                                <!--====== Radio Box ======-->
+                                                <div class="radio-box">
+
+                                                    <input type="radio" id="wallet-transfer" name="payment"
+                                                        value="wallet">
+                                                    <div class="radio-box__state radio-box__state--primary">
+
+                                                        <label class="radio-box__label"
+                                                            for="wallet-transfer">Wallet</label>
+                                                    </div>
+                                                </div>
+                                                <!--====== End - Radio Box ======-->
+
+                                                <span class="gl-text u-s-m-t-6">Make your payment through your
+                                                    wallet</span>
+                                            </div>
+
+                                            <div>
+
+                                                <button class="btn btn--e-brand-b-2" type="submit">PLACE ORDER</button>
+                                                <p id="walletMessage" style="color:red;font-weight:600;margin-top:15px;"></p>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--====== End - Order Summary ======-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--====== End - Section Content ======-->
+    </div>
+    <!--====== End - Section 3 ======-->
+</div>
+<!--====== End - App Content ======-->
+
+
+<!--====== Main Footer ======-->
+<footer>
+    <div class="outer-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="outer-footer__content u-s-m-b-40">
+
+                        <span class="outer-footer__content-title">Contact Us</span>
+                        <div class="outer-footer__text-wrap"><i class="fas fa-home"></i>
+
+                            <span>4247 Ashford Drive Virginia VA-20006 USA</span>
+                        </div>
+                        <div class="outer-footer__text-wrap"><i class="fas fa-phone-volume"></i>
+
+                            <span>(+0) 900 901 904</span>
+                        </div>
+                        <div class="outer-footer__text-wrap"><i class="far fa-envelope"></i>
+
+                            <span>contact@domain.com</span>
+                        </div>
+                        <div class="outer-footer__social">
+                            <ul>
+                                <li>
+
+                                    <a class="s-fb--color-hover" href="#"><i class="fab fa-facebook-f"></i></a>
+                                </li>
+                                <li>
+
+                                    <a class="s-tw--color-hover" href="#"><i class="fab fa-twitter"></i></a>
+                                </li>
+                                <li>
+
+                                    <a class="s-youtube--color-hover" href="#"><i class="fab fa-youtube"></i></a>
+                                </li>
+                                <li>
+
+                                    <a class="s-insta--color-hover" href="#"><i class="fab fa-instagram"></i></a>
+                                </li>
+                                <li>
+
+                                    <a class="s-gplus--color-hover" href="#"><i class="fab fa-google-plus-g"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <div class="outer-footer__content u-s-m-b-40">
+
+                                <span class="outer-footer__content-title">Information</span>
+                                <div class="outer-footer__list-wrap">
+                                    <ul>
+                                        <li>
+
+                                            <a href="cart.html">Cart</a>
+                                        </li>
+                                        <li>
+
+                                            <a href="dashboard.html">Account</a>
+                                        </li>
+                                        <li>
+
+                                            <a href="shop-side-version-2.html">Manufacturer</a>
+                                        </li>
+                                        <li>
+
+                                            <a href="dash-payment-option.html">Finance</a>
+                                        </li>
+                                        <li>
+
+                                            <a href="shop-side-version-2.html">Shop</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <div class="outer-footer__content u-s-m-b-40">
+                                <div class="outer-footer__list-wrap">
+
+                                    <span class="outer-footer__content-title">Our Company</span>
+                                    <ul>
+                                        <li>
+
+                                            <a href="about.html">About us</a>
+                                        </li>
+                                        <li>
+
+                                            <a href="contact.html">Contact Us</a>
+                                        </li>
+                                        <li>
+
+                                            <a href="index.html">Sitemap</a>
+                                        </li>
+                                        <li>
+
+                                            <a href="dash-my-order.html">Delivery</a>
+                                        </li>
+                                        <li>
+
+                                            <a href="shop-side-version-2.html">Store</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    <div class="outer-footer__content">
+
+                        <span class="outer-footer__content-title">Join our Newsletter</span>
+                        <form class="newsletter">
+                            <div class="u-s-m-b-15">
+                                <div class="radio-box newsletter__radio">
+
+                                    <input type="radio" id="male" name="gender">
+                                    <div class="radio-box__state radio-box__state--primary">
+
+                                        <label class="radio-box__label" for="male">Male</label>
+                                    </div>
+                                </div>
+                                <div class="radio-box newsletter__radio">
+
+                                    <input type="radio" id="female" name="gender">
+                                    <div class="radio-box__state radio-box__state--primary">
+
+                                        <label class="radio-box__label" for="female">Female</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="newsletter__group">
+
+                                <label for="newsletter"></label>
+
+                                <input class="input-text input-text--only-white" type="text" id="newsletter"
+                                    placeholder="Enter your Email">
+
+                                <button class="btn btn--e-brand newsletter__btn" type="submit">SUBSCRIBE</button>
+                            </div>
+
+                            <span class="newsletter__text">Subscribe to the mailing list to receive updates on
+                                promotions, new arrivals, discount and coupons.</span>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="lower-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="lower-footer__content">
+                        <div class="lower-footer__copyright">
+
+                            <span>Copyright © 2018</span>
+
+                            <a href="index.html">Reshop</a>
+
+                            <span>All Right Reserved</span>
+                        </div>
+                        <div class="lower-footer__payment">
+                            <ul>
+                                <li><i class="fab fa-cc-stripe"></i></li>
+                                <li><i class="fab fa-cc-paypal"></i></li>
+                                <li><i class="fab fa-cc-mastercard"></i></li>
+                                <li><i class="fab fa-cc-visa"></i></li>
+                                <li><i class="fab fa-cc-discover"></i></li>
+                                <li><i class="fab fa-cc-amex"></i></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!--====== Modal Section ======-->
+
+
+<!--====== Shipping Address Add Modal ======-->
+<div class="modal fade" id="edit-ship-address">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="checkout-modal2">
+                    <div class="u-s-m-b-30">
+                        <div class="dash-l-r">
+                            <h1 class="gl-modal-h1">Shipping Address</h1>
+                            <div class="dash__link dash__link--brand">
+
+                                <a data-modal="modal" data-modal-id="#add-ship-address" data-dismiss="modal">Add new
+                                    Address</a>
+                            </div>
+                        </div>
+                    </div>
+                    <form class="checkout-modal2__form" action="selectAddress" method="post">
+                        <div class="dash__table-2-wrap u-s-m-b-30 gl-scroll">
+                            <table class="dash__table-2">
+                                <thead>
+                                    <tr>
+                                        <th>Action</th>
+                                        <th>Full Name</th>
+                                        <th>Address</th>
+                                        {{!-- <th>Region</th> --}}
+                                        <th>Phone Number</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {{#each addressDatas}}
+                                    <tr>
+                                        <td>
+
+                                            <!--====== Radio Box ======-->
+                                            <div class="radio-box">
+
+                                                <input type="radio" id="address-1" name="index" checked
+                                                    value={{@index}}>
+                                                <div class="radio-box__state radio-box__state--primary">
+
+                                                    <label class="radio-box__label" for="address-1"></label>
+                                                </div>
+                                            </div>
+                                            <!--====== End - Radio Box ======-->
+                                        </td>
+                                        <td>{{this.firstname}} {{this.lastname}}</td>
+                                        <td>{{this.street}},{{this.city}},{{this.state}},{{this.country}}</td>
+                                        {{!-- <td>Virginia VA-20006 USA</td> --}}
+                                        <td>(+91) {{this.phone}}</td>
+                                        <td>
+                                            <a class="ship-b__edit btn--e-transparent-platinum-b-2" data-modal="modal"
+                                                data-modal-id="#edit-ship-address">Edit</a>
+                                        </td>
+                                    </tr>
+                                    {{/each}}
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="gl-modal-btn-group">
+
+                            <button class="btn btn--e-brand-b-2" type="submit">SAVE</button>
+
+                            <button class="btn btn--e-grey-b-2" type="button" data-dismiss="modal">CANCEL</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--====== End - Shipping Address Add Modal ======-->
+
+
+<!--====== Shipping Address Add Modal ======-->
+<div class="modal fade" id="add-ship-address">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="checkout-modal1">
+                    <form class="checkout-modal1__form" action="deliveryInfo" method="post">
+                        <div class="u-s-m-b-30">
+                            <h1 class="gl-modal-h1">Add new Shipping Address</h1>
+                        </div>
+                        <div class="gl-inline">
+                            <div class="u-s-m-b-30">
+
+                                <label class="gl-label" for="address-fname">FIRST NAME *</label>
+
+                                <input class="input-text input-text--primary-style" name="firstname" type="text"
+                                    id="address-fname" placeholder="First Name">
+                            </div>
+                            <div class="u-s-m-b-30">
+
+                                <label class="gl-label" for="address-lname">LAST NAME *</label>
+
+                                <input class="input-text input-text--primary-style" type="text" name="lastname"
+                                    id="address-lname" placeholder="Last Name">
+                            </div>
+                        </div>
+                        <div class="gl-inline">
+                            <div class="u-s-m-b-30">
+
+                                <label class="gl-label" for="address-phone">PHONE *</label>
+
+                                <input class="input-text input-text--primary-style" name="phone" type="text"
+                                    id="address-phone">
+                            </div>
+                            <div class="u-s-m-b-30">
+
+                                <label class="gl-label" for="address-street">STREET ADDRESS *</label>
+
+                                <input class="input-text input-text--primary-style" name="street" type="text"
+                                    id="address-street" placeholder="House Name and Street">
+                            </div>
+                        </div>
+                        <div class="gl-inline">
+                            <div class="u-s-m-b-30">
+
+                                <!--====== Select Box ======-->
+
+                                <label class="gl-label" for="address-country">COUNTRY *</label>
+                                <select class="select-box select-box--primary-style" id="address-country"
+                                    name="country">
+                                    <option selected value="">Choose Country</option>
+                                    <option value="United Arab Emirate">United Arab Emirate (UAE)</option>
+                                    <option value="United Kingdom">United Kingdom (UK)</option>
+                                    <option value="United States">United States (US)</option>
+                                    <option value="India">India (IND)</option>
+                                </select>
+                                <!--====== End - Select Box ======-->
+                            </div>
+                            <div class="u-s-m-b-30">
+
+                                <!--====== Select Box ======-->
+
+                                <label class="gl-label" for="address-state">STATE/PROVINCE *</label>
+                                <select class="select-box select-box--primary-style" id="address-state" name="state">
+                                    <option selected value="">Choose State/Province</option>
+                                    <option value="Alabama">Alabama</option>
+                                    <option value="Alaska">Alaska</option>
+                                    <option value="New York">New York</option>
+                                    <option value="Kerala">Kerala</option>
+                                </select>
+                                <!--====== End - Select Box ======-->
+                            </div>
+                        </div>
+                        <div class="gl-inline">
+                            <div class="u-s-m-b-30">
+
+                                <label class="gl-label" for="address-city">TOWN/CITY *</label>
+
+                                <input class="input-text input-text--primary-style" type="text" id="address-city"
+                                    name="city">
+                            </div>
+                            <div class="u-s-m-b-30">
+
+                                <label class="gl-label" for="address-street">ZIP/POSTAL CODE *</label>
+
+                                <input class="input-text input-text--primary-style" name="pincode" type="text"
+                                    id="address-postal" placeholder="Zip/Postal Code">
+                            </div>
+                        </div>
+
+                        <div class="gl-modal-btn-group">
+
+                            <button class="btn btn--e-brand-b-2" type="submit">SAVE</button>
+
+                            <button class="btn btn--e-grey-b-2" type="button" data-dismiss="modal">CANCEL</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--====== End - Shipping Address Add Modal ======-->
+<!--====== End - Modal Section ======-->
+</div>
+<!--====== End - Main App ======-->
+<script>
+
+    $("#paymentInformation").submit((e) => {
+
+        e.preventDefault()
+        const paymentMethod = document.querySelector('input[name="payment"]:checked').value;
+        if (paymentMethod === 'COD') {
+            console.log(1)
+            $.ajax({
+                url: "/paymentInfo",
+                method: "post",
+                data: $("#paymentInformation").serialize(),
+                success: (response) => {
+                    location.replace('/orderSuccess')
+                }
+            })
+        } else if(paymentMethod === 'wallet') {
+            console.log(paymentMethod)
+                $.ajax({
+                    url: "/walletInfo",
+                    method: "post",
+                    data: $("#paymentInformation").serialize(),
+                    success: (response) =>{
+                        if(response.message=='success'){
+                           location.replace('/orderSuccess')
+
+                        }else if(response.message=="failed"){
+                           $('#walletMessage').text("Insufficient amount in wallet. please choose another payment option..")
+                           setTimeout(()=>{
+                             $('#walletMessage').text("")
+                           },6000)
+
+                        }
+                    }
+                })
+        } 
+
+        {{!-- else{
+                           $('#grandTotal2').text("₹"+response.subTotal)
+                        } --}}
+        else {
+            console.log(2)
+            $.ajax({
+                url: "/initiaterazorpay",
+                method: "post",
+                {{!-- data: $('#checkoutform').serialize(), --}}
+                success: (res) => {
+
+
+                    //---------------------------------------------------------------------------------
+
+                    amount = res.razorData.amount
+                    console.log(amount);
+                    var options = {
+                        "key": "rzp_test_7kdoBr9Jk8LB4t", // Enter the Key ID generated from the Dashboard
+                        "amount": amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+                        "currency": "INR",
+                        "name": "AzonStore",
+                        "description": "India's best Mens Fashion website",
+                        "image": "/public/img/logo.png",
+                        "order_id": res.razorData.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+                        "handler": function (response) {
+                            verifyPayment(response, res.razorData);
+                        },
+                        "prefill": {
+                            "name": "Gaurav Kumar",
+                            "email": "gaurav.kumar@example.com",
+                            "contact": "9999999999"
+                        },
+                        "notes": {
+                            "address": "Razorpay Corporate Office"
+                        },
+                        "theme": {
+                            "color": "#3399cc"
+                        }
+                    };
+                    var rzp1 = new Razorpay(options);
+                    rzp1.open();
+                    e.preventDefault();
+                    rzp1.on('payment.failed', function (response) {
+
+
+                    });
+
+
+
+                }
+            })
+
+        }
+
+    })
+    function verifyPayment(razorResponse, razorData) {
+        $.ajax({
+            url: "/verifyRazorpay",
+            data: {
+                razorResponse,
+                razorData
+            },
+            method: 'post',
+            success: (response) => {
+                console.log(3)
+                location.replace("/orderSuccess")
+            }
+        })
+    }
+
+</script>

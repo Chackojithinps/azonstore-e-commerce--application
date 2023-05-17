@@ -1,0 +1,64 @@
+<div class="container-fluid pt-4 px-4">
+    <div class="bg-light text-center rounded p-4">
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <h6 class="mb-0">Recent Salse</h6>
+            <a href="">Show All</a>
+        </div>
+        <div class="table-responsive">
+            <table class="table text-start align-middle table-bordered table-hover mb-0">
+                <thead>
+                    <tr class="text-dark">
+
+                        <th scope="col">Date</th>
+                        <th scope="col">Order No</th>
+                        <th scope="col">Payment</th>
+                        <th scope="col">Payment status</th>
+                        <th scope="col">Amount</th>
+                        <th scope="col">Order status</th>
+                        <th scope="col">status</th>
+                        <th scope="col">View products</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each orderData}}
+                    <tr>
+                        <td>01 Jan 2045</td>
+                        <td>{{this._id}}</td>
+                        <td>{{this.payment}}</td>
+                        <td>{{this.paymentStatus}}</td>
+                      
+                        <td>{{this.grandTotal}}</td>
+                       
+                        <td>
+                            <div class="dropdown">
+                                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                     Manage
+                                </button>
+                                {{#if (eq this.status "requested")}}
+                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                     <li><a class="dropdown-item" href="/cancelReturn?id={{this._id}}">Cancel</a></li>
+                                    <li><a class="dropdown-item" href="/confirmReturn?id={{this._id}}">Accept</a></li>
+                                 </ul>
+                                {{else}}
+                               
+                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <li><a class="dropdown-item" href="/itemDelivered?id={{this._id}}">delivered</a></li>
+                                    <li><a class="dropdown-item" href="/itemCancelled?id={{this._id}}">cancelled</a></li>
+                                    <li><a class="dropdown-item" href="/itemDispatched?id={{this._id}}">dispatch</a></li>
+                                    <li><a class="dropdown-item" href="/itemShipped?id={{this._id}}">shipped</a></li>
+                                </ul>
+                                {{/if}}
+                            </div>
+                        </td>
+                        
+                        <td>{{this.status}}</td>
+                
+                        <td><a class="btn btn-sm btn-success" href="viewuserOrders?id={{this._id}}">View products</a></td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,60 @@
+<!--================Table =================-->
+<div class="row mt-5">
+    <a href="/addCoupon" class="btn btn-success product-btn ml-auto">Add Coupon</a>
+</div>
+<div class="col-12">
+    <div class="bg-light rounded h-100 p-4">
+        <h6 class="mb-4">Responsive Table</h6>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Coupon Name</th>
+                        {{!-- <th scope="col">Last Name</th> --}}
+                        <th scope="col">Coupon Code</th>
+                        <th scope="col">Discount</th>
+                        <th scope="col">Max Discount</th>
+                        <th scope="col">Min Amount</th>
+                        <th scope="col">Expiry Date</th>
+                        <th scope="col">Manage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each couponData}}
+                    <tr>
+                        <th scope="row">{{inc @index}}</th>
+                        <td>{{this.name}}</td>
+
+                        <td>{{this.code}}</td>
+                        <td>{{this.discount}} %</td>
+                        <td>{{this.maxamount}}</td>
+                        <td>{{this.minamount}}</td>
+
+                        <td>{{this.expiryDate}}</td>
+                        <td>
+                            <a href="#" class="table-link danger">
+                                        <span class="fa-stack">
+                                            <i class="fa fa-square fa-stack-2x"></i>
+                                            <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                                        </span>
+                                    </a>
+                        </td>
+
+                        
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!--================Table end =================-->
+
+</div>
+<!-- Content End -->
+
+
+<!-- Back to Top -->
+<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+</div>
