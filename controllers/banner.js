@@ -29,7 +29,6 @@ const postaddBanner=async(req,res)=>{
             highlight:req.body.highlight,
             description:req.body.description,
             image: img,
-    
         })
         const bannerDatas = await bannerData.save()
         console.log(bannerData)

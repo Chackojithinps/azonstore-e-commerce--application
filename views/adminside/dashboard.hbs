@@ -1,216 +1,215 @@
 <div class="container-fluid pt-4 px-4">
-<div style="display:flex;">
-<canvas id="myChart1" style="width:100%;max-width:600px;margin-top:5rem;"></canvas>
-<div
-id="myChart" style="width:100%; max-width:600px; height:500px;">
-</div>
-
-</div>
-<div class="d-flex" style="justify-content:space-between">
-
-<form action="/adminDashboard?" class="d-flex" method="">
-                    <div class="p-2">
-                        
-                        <input class="form-control" type="date" value="{{from}}" name="from">
-                    </div>
-                    <div class="p-2">
-                        
-                        <input class="form-control" type="date" value="{{to}}" name="to">
-                    </div>
-
-                    <div class="p-2">
-                        
-                        <a href=""><button class="btn btn-primary" type="submit">Filter</button></a>
-                    </div>
-</form>
-<div>
-  <button onclick="printDiv('printAll1')">Download PDF</button>
-</div>
-</div>
-    <div class="bg-light text-center rounded p-4" id="printAll1">
-
-        <div class="d-flex align-items-center justify-content-between mb-4">
-            <h6 class="mb-0">Recent Sales</h6>
-            <a href="">Show All</a>
-        </div>
-        <div class="table-responsive">
-
-            <table class="table text-start align-middle table-bordered table-hover mb-0">
-                <thead>
-                    <tr class="text-dark">
-
-                        <th scope="col">Date</th>
-                        <th scope="col">Order No</th>
-                        <th scope="col">Total Price</th>
-                        <th scope="col">Payment</th>
-                        <th scope="col">Status</th>
-                        
-                    </tr>
-                </thead>
-                
-                <tbody>
- {{#if orderData}}
-                     {{#each orderData}}
-                    <tr>
-                        <td>{{this.date}}</td>
-                        
-                        <td>{{this._id}}</td>
-                        <td>{{this.totalPrice}}</td>
-
-                        <td>{{this.payment}}</td>
-                      {{#if (eq this.status "returned")}}
-                        <td><button class="dashboardButton3">{{this.status}}</button></td>
-                     {{/if}}
-                        
-                       {{#if (eq this.status "ordered")}}
-                        <td><button class="dashboardButton2">{{this.status}}</button></td>
-
-                       {{/if}}
-                       {{#if (eq this.status "Dispatched")}}
-                        <td><button class="dashboardButton2">{{this.status}}</button></td>
-
-                       {{/if}}
-                        {{#if (eq this.status "Shipped")}}
-                        <td><button class="dashboardButton2">{{this.status}}</button></td>
-
-                       {{/if}}
-                         {{#if (eq this.status "delivered")}}
-                        <td><button class="dashboardButton">{{this.status}}</button></td>
-
-                       {{/if}}
-                        {{#if (eq this.status "requested")}}
-                        <td><button class="dashboardButton4">{{this.status}}</button></td>
-
-                       {{/if}}
-                       {{#if (eq this.status "Cancelled")}}
-                        <td><button class="dashboardButton4">{{this.status}}</button></td>
-
-                       {{/if}}
-                        
-                    </tr>
-                    {{/each}}
-
-
-              {{else}}
-
-
-                    {{#each orderDatas}}
-                    <tr>
-                        <td>{{this.date}}</td>
-                        
-                        <td>{{this._id}}</td>
-                        <td>{{this.totalPrice}}</td>
-
-                        <td>{{this.payment}}</td>
-                      {{#if (eq this.status "returned")}}
-                        <td><button class="dashboardButton3">{{this.status}}</button></td>
-                     {{/if}}
-                        
-                       {{#if (eq this.status "ordered")}}
-                        <td><button class="dashboardButton2">{{this.status}}</button></td>
-
-                       {{/if}}
-                       {{#if (eq this.status "Dispatched")}}
-                        <td><button class="dashboardButton2">{{this.status}}</button></td>
-
-                       {{/if}}
-                        {{#if (eq this.status "Shipped")}}
-                        <td><button class="dashboardButton2">{{this.status}}</button></td>
-
-                       {{/if}}
-                         {{#if (eq this.status "delivered")}}
-                        <td><button class="dashboardButton">{{this.status}}</button></td>
-
-                       {{/if}}
-                        {{#if (eq this.status "requested")}}
-                        <td><button class="dashboardButton4">{{this.status}}</button></td>
-
-                       {{/if}}
-                       {{#if (eq this.status "Cancelled")}}
-                        <td><button class="dashboardButton4">{{this.status}}</button></td>
-
-                       {{/if}}
-                        
-                    </tr>
-                    {{/each}}
-                    {{/if}}
-                </tbody>
-            </table>
-        </div>
+  <div style="display:flex;">
+    <canvas id="myChart1" style="width:100%;max-width:600px;margin-top:5rem;"></canvas>
+    <div id="myChart" style="width:100%; max-width:600px; height:500px;">
     </div>
+
+  </div>
+  <div class="d-flex" style="justify-content:space-between">
+
+    <form action="/adminDashboard?" class="d-flex" method="">
+      <div class="p-2">
+
+        <input class="form-control" type="date" value="{{from}}" name="from">
+      </div>
+      <div class="p-2">
+
+        <input class="form-control" type="date" value="{{to}}" name="to">
+      </div>
+
+      <div class="p-2">
+
+        <a href=""><button class="btn btn-primary" type="submit">Filter</button></a>
+      </div>
+    </form>
+    <div>
+      <button class="pdfContent" onclick="printDiv('printAll1')">Download PDF</button>
+    </div>
+  </div>
+  <div class="bg-light text-center rounded p-4" id="printAll1">
+
+    <div class="d-flex align-items-center justify-content-between mb-4">
+      <h6 class="mb-0">Recent Sales</h6>
+      <a href="">Show All</a>
+    </div>
+    <div class="table-responsive">
+
+      <table class="table text-start align-middle table-bordered table-hover mb-0">
+        <thead>
+          <tr class="text-dark">
+
+            <th scope="col">Date</th>
+            <th scope="col">Order No</th>
+            <th scope="col">Total Price</th>
+            <th scope="col">Payment</th>
+            <th scope="col">Status</th>
+
+          </tr>
+        </thead>
+
+        <tbody>
+          {{#if orderData}}
+          {{#each orderData}}
+          <tr>
+            <td>{{this.date}}</td>
+
+            <td>{{this._id}}</td>
+            <td>{{this.totalPrice}}</td>
+
+            <td>{{this.payment}}</td>
+            {{#if (eq this.status "returned")}}
+            <td><button class="dashboardButton3">{{this.status}}</button></td>
+            {{/if}}
+
+            {{#if (eq this.status "ordered")}}
+            <td><button class="dashboardButton2">{{this.status}}</button></td>
+
+            {{/if}}
+            {{#if (eq this.status "Dispatched")}}
+            <td><button class="dashboardButton2">{{this.status}}</button></td>
+
+            {{/if}}
+            {{#if (eq this.status "Shipped")}}
+            <td><button class="dashboardButton2">{{this.status}}</button></td>
+
+            {{/if}}
+            {{#if (eq this.status "delivered")}}
+            <td><button class="dashboardButton">{{this.status}}</button></td>
+
+            {{/if}}
+            {{#if (eq this.status "requested")}}
+            <td><button class="dashboardButton4">{{this.status}}</button></td>
+
+            {{/if}}
+            {{#if (eq this.status "Cancelled")}}
+            <td><button class="dashboardButton4">{{this.status}}</button></td>
+
+            {{/if}}
+
+          </tr>
+          {{/each}}
+
+
+          {{else}}
+
+
+          {{#each orderDatas}}
+          <tr>
+            <td>{{this.date}}</td>
+
+            <td>{{this._id}}</td>
+            <td>{{this.totalPrice}}</td>
+
+            <td>{{this.payment}}</td>
+            {{#if (eq this.status "returned")}}
+            <td><button class="dashboardButton3">{{this.status}}</button></td>
+            {{/if}}
+
+            {{#if (eq this.status "ordered")}}
+            <td><button class="dashboardButton2">{{this.status}}</button></td>
+
+            {{/if}}
+            {{#if (eq this.status "Dispatched")}}
+            <td><button class="dashboardButton2">{{this.status}}</button></td>
+
+            {{/if}}
+            {{#if (eq this.status "Shipped")}}
+            <td><button class="dashboardButton2">{{this.status}}</button></td>
+
+            {{/if}}
+            {{#if (eq this.status "delivered")}}
+            <td><button class="dashboardButton">{{this.status}}</button></td>
+
+            {{/if}}
+            {{#if (eq this.status "requested")}}
+            <td><button class="dashboardButton4">{{this.status}}</button></td>
+
+            {{/if}}
+            {{#if (eq this.status "Cancelled")}}
+            <td><button class="dashboardButton4">{{this.status}}</button></td>
+
+            {{/if}}
+
+          </tr>
+          {{/each}}
+          {{/if}}
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
 
 <script>
-    
-const mo = {{mo}}
-               const tu = {{tu}}
-               const we = {{we}}
-               const th = {{th}}
-               const fr = {{fr}}
-               const sa = {{sa}}
-               const su = {{su}}
-{{!-- var xValues = ["M", "France", "Spain", "USA", "Argentina"]; --}}
-    var xValues = ["mon", "tue", "wed", "thu", "fri","sat","sun"];
-{{!-- var yValues = [55, 49, 44, 24, 15]; --}}
-var yValues = [mo, tu, we, th, fr,sa,su];
-var barColors = ["lightblue", "green","blue","orange","brown","red","purple"];
 
-new Chart("myChart1", {
-  type: "bar",
-  data: {
-    labels: xValues,
-    datasets: [{
-      backgroundColor: barColors,
-      data: yValues
-    }]
-  },
-  options: {
-    legend: {display: false},
-    title: {
-      display: true,
-      text: "Weekly order chart"
+  const mo = {{ mo }}
+  const tu = {{ tu }}
+  const we = {{ we }}
+  const th = {{ th }}
+  const fr = {{ fr }}
+  const sa = {{ sa }}
+  const su = {{ su }}
+  { { !-- var xValues = ["M", "France", "Spain", "USA", "Argentina"]; --} }
+  var xValues = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
+  { { !-- var yValues = [55, 49, 44, 24, 15]; --} }
+  var yValues = [mo, tu, we, th, fr, sa, su];
+  var barColors = ["lightblue", "green", "blue", "orange", "brown", "red", "purple"];
+
+  new Chart("myChart1", {
+    type: "bar",
+    data: {
+      labels: xValues,
+      datasets: [{
+        backgroundColor: barColors,
+        data: yValues
+      }]
+    },
+    options: {
+      legend: { display: false },
+      title: {
+        display: true,
+        text: "Weekly order chart"
+      }
     }
-  }
-});
+  });
 </script>
 <script>
-google.charts.load('current', {'packages':['corechart']});
-google.charts.setOnLoadCallback(drawChart);
-const shi={{shi}}
-const del={{del}}
-const ord={{ord}}
-const ret={{ret}}
-const can={{can}}
-const dis={{dis}}
-function drawChart() {
-const data = google.visualization.arrayToDataTable([
+  google.charts.load('current', { 'packages': ['corechart'] });
+  google.charts.setOnLoadCallback(drawChart);
+  const shi = {{ shi }}
+  const del = {{ del }}
+  const ord = {{ ord }}
+  const ret = {{ ret }}
+  const can = {{ can }}
+  const dis = {{ dis }}
+  function drawChart() {
+    const data = google.visualization.arrayToDataTable([
 
-   ['Contry', 'Mhl'],
-  ['ordered', ord],
-  ['cancelled',can],
-  ['returned', ret],
-  ['delivered', del],
-  ['shipped', shi],
-  
-]);
-console.log(can)
-const options = {
-  title:'Order Status'
-};
+      ['Contry', 'Mhl'],
+      ['ordered', ord],
+      ['cancelled', can],
+      ['returned', ret],
+      ['delivered', del],
+      ['shipped', shi],
 
-const chart = new google.visualization.PieChart(document.getElementById('myChart'));
-  chart.draw(data, options);
-}
+    ]);
+    console.log(can)
+    const options = {
+      title: 'Order Status'
+    };
 
-function printDiv(divName) {
-        var printContents = document.getElementById(divName).innerHTML;
-        var originalContents = document.body.innerHTML;
+    const chart = new google.visualization.PieChart(document.getElementById('myChart'));
+    chart.draw(data, options);
+  }
 
-        document.body.innerHTML = printContents;
+  function printDiv(divName) {
+    var printContents = document.getElementById(divName).innerHTML;
+    var originalContents = document.body.innerHTML;
 
-        window.print();
+    document.body.innerHTML = printContents;
 
-        document.body.innerHTML = originalContents;
+    window.print();
 
-}
+    document.body.innerHTML = originalContents;
+
+  }
 </script>

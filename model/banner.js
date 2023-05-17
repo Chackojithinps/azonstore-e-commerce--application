@@ -15,7 +15,6 @@ const bannerSchema=mongoose.Schema({
     },
     highlight:{
         type:String
-    }
-    
+    },
 }) 
 module.exports = mongoose.model('banner',bannerSchema)

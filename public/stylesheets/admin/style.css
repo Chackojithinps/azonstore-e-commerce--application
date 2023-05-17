@@ -49,6 +49,14 @@
     background: yellow;
     font-size: 14px;
 }
+.pdfContent{
+    background: red;
+    border-radius: 4px;
+    color: white;
+    border: none;
+    height: 38px;
+}
+
 /*** Spinner ***/
 #spinner {
     opacity: 0;
