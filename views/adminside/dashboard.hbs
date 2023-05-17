@@ -10,7 +10,7 @@ id="myChart" style="width:100%; max-width:600px; height:500px;">
     <div class="bg-light text-center rounded p-4">
 
         <div class="d-flex align-items-center justify-content-between mb-4">
-            <h6 class="mb-0">Recent Salse</h6>
+            <h6 class="mb-0">Recent Sales</h6>
             <a href="">Show All</a>
         </div>
         <div class="table-responsive">
@@ -27,7 +27,52 @@ id="myChart" style="width:100%; max-width:600px; height:500px;">
                         
                     </tr>
                 </thead>
+                
                 <tbody>
+ {{#if orderData}}
+                     {{#each orderData}}
+                    <tr>
+                        <td>{{this.date}}</td>
+                        
+                        <td>{{this._id}}</td>
+                        <td>{{this.totalPrice}}</td>
+
+                        <td>{{this.payment}}</td>
+                      {{#if (eq this.status "returned")}}
+                        <td><button class="dashboardButton3">{{this.status}}</button></td>
+                     {{/if}}
+                        
+                       {{#if (eq this.status "ordered")}}
+                        <td><button class="dashboardButton2">{{this.status}}</button></td>
+
+                       {{/if}}
+                       {{#if (eq this.status "Dispatched")}}
+                        <td><button class="dashboardButton2">{{this.status}}</button></td>
+
+                       {{/if}}
+                        {{#if (eq this.status "Shipped")}}
+                        <td><button class="dashboardButton2">{{this.status}}</button></td>
+
+                       {{/if}}
+                         {{#if (eq this.status "delivered")}}
+                        <td><button class="dashboardButton">{{this.status}}</button></td>
+
+                       {{/if}}
+                        {{#if (eq this.status "requested")}}
+                        <td><button class="dashboardButton4">{{this.status}}</button></td>
+
+                       {{/if}}
+                       {{#if (eq this.status "Cancelled")}}
+                        <td><button class="dashboardButton4">{{this.status}}</button></td>
+
+                       {{/if}}
+                        
+                    </tr>
+                    {{/each}}
+
+
+              {{else}}
+
 
                     {{#each orderDatas}}
                     <tr>
@@ -68,6 +113,7 @@ id="myChart" style="width:100%; max-width:600px; height:500px;">
                         
                     </tr>
                     {{/each}}
+                    {{/if}}
                 </tbody>
             </table>
         </div>
