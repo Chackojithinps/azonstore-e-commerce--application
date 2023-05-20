@@ -74,7 +74,15 @@ const getHomepage = async (req, res) => {
     const categoryData = await category.find().lean()
     const Largerbanner=await banner.find({type:"Larger"}).lean()
     const smallerbanner=await banner.find({type:"Smaller"}).lean()
-   
+    const cartData=await cart.findOne({user:req.session.user}).lean()
+    // console.log("cartData:",cartData)
+    if(cartData){
+        var productCount = cartData.product.length
+        console.log("Product count:", productCount);
+        req.session.productCount=productCount
+    }
+    // productCount=prou
+    // req.session.cartCount=productCount
       const isUser = await user.findOne({ _id: req.session.user }).lean();
       req.session.isUser=isUser
       res.render("user/home", {
@@ -82,7 +90,7 @@ const getHomepage = async (req, res) => {
         user: true,
         productData,
         isUser,
-        productData, categoryData,Largerbanner,smallerbanner
+        productData, categoryData,Largerbanner,smallerbanner,productCount
       });
     
       
@@ -157,7 +165,7 @@ const getHomepage = async (req, res) => {
   const postUserSignin = async (req, res) => {
     try {
       const userData = await user.findOne({ email: req.body.email });
-      console.log(userData)
+      // console.log(userData)
       // console.log(userData)
       if (userData) {
         if (userData.status) {
@@ -207,8 +215,14 @@ const getHomepage = async (req, res) => {
      const isUser = await user.findOne({ _id: req.session.user }).lean()   
     // Get the total number of documents and calculate the number of pages
     const totalDocuments = await product.countDocuments();
-    const totalPages = Math.ceil(totalDocuments / perPage);
+    const totalPages = Math.ceil(totalDocuments / perPage); 
     // Generate an array of page numbers to use for the pagination links
+    const cartData=await cart.findOne({user:req.session.user})
+    if(cartData){
+      var productCount=cartData.product.length;
+      req.session.productCount=productCount;
+    }
+
     const pageNumbers = [];
     for (let i = 1; i <= totalPages; i++) {
       pageNumbers.push(i);
@@ -265,7 +279,7 @@ const getHomepage = async (req, res) => {
         pageNumbers,
         sortValue,
         totalDocuments,
-        search:search
+        search:search,productCount
       });
       
     } catch (error) {
@@ -350,10 +364,10 @@ const getHomepage = async (req, res) => {
     try {
       if (req.session.user) {
         const isUser = await user.findOne({ _id: req.session.user }).lean()
-
+        productCount=req.session.productCount;
         const userData = await user.findOne({ _id: req.session.user }).lean();
         console.log(userData);
-        res.render("user/profile", { user: true, user1: true, userData, isUser });
+        res.render("user/profile", { user: true, user1: true, userData, isUser,productCount });
       } else {
         res.redirect("/userLogin");
       }

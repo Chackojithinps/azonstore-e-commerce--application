@@ -737,6 +737,9 @@
 
                 if (response.msg == "success") {
                     swal("Product added to cart!", "Please check the cart page!", "success");
+                    console.log(response.productCount)
+                    $('#productCount').text(response.productCount)
+
                 } if (response.msg == "failed") {
                     swal({
                         icon: 'error',

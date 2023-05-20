@@ -7,15 +7,15 @@ const address = require("../model/address")
 const getCartpage = async (req, res) => {
   try {
     if (req.session.user) {
+      const productCount=req.session.productCount
       const userCart = await cart
         .findOne({ user: req.session.user })
         .populate("product.productId").lean();
       const isUser = await user.findOne({ _id: req.session.user }).lean()
-      if (userCart) {
+      if (userCart){
         const cartId=userCart._id
         const data = userCart.product;
         req.session.cartProducts = data
-        
         const userList = data.map(({ productId, quantity, price }) => ({
           _id: productId ? productId._id : null,
           name: productId ? productId.name : null,
@@ -37,10 +37,10 @@ const getCartpage = async (req, res) => {
         res.render("user/cart", {
           user: true,
           user1: true, isUser,
-          userList, subTotal,cartId
+          userList, subTotal,cartId,productCount
         });
       } else {
-        res.render("user/emptyCart", { user: true, user1: true });
+        res.render("user/emptyCart", { user: true, user1: true, isUser:true,productCount});
       }
     } else {
       res.redirect('/userLogin')
@@ -59,19 +59,13 @@ const addToCart = async (req, res) => {
       console.log(req.body.productId)
       const productDetails=await product.findOne({_id:req.body.productId})
       if(productDetails.quantity>=1){
-
-    
               const userId = req.session.user;
               const productId = req.body.productId;
-        
-              const userCart = await cart.findOne({ user: userId }).lean();
-
-
+             const userCart = await cart.findOne({ user: userId }).lean();
               if (userCart) {
                 const productExists = await userCart.product.findIndex(
                   (product) => product.productId == productId
                 );
-
                 if (productExists != -1) {
                   await cart.updateOne(
                     { user: userId, "product.productId": productId },
@@ -82,11 +76,13 @@ const addToCart = async (req, res) => {
                     { user: userId},
                     { $push: { product: { productId: productId } } }
                   );
+                  productCount=req.session.cartCount;
+                  productCount=productCount+1;
+                  req.session.cartCount=productCount;
                 }
-                // await product.updateOne({_id:productId},{$inc:{quantity:-1}})
-                
+                // await product.updateOne({_id:productId},{$inc:{quantity:-1}})         
                 // res.redirect("/");
-                res.json({msg:"success"});
+                res.json({msg:"success",productCount});
 
               } else {
                 const product1 = await product.findOne({ _id: productId })
@@ -101,10 +97,12 @@ const addToCart = async (req, res) => {
                   ],
                   totalPrice: product1.price
                 });
+                productCount=1;
+                req.session.cartCount=productCount
                 const cartDatas = await cartData.save();
                 // await product.updateOne({_id:productId},{$inc:{quantity:-1}})
                 
-                res.json({msg:"success"});
+                res.json({msg:"success",productCount});
       }
     } else {
       res.json({msg:"failed"})
@@ -257,7 +255,12 @@ const deleteProduct = async (req, res) => {
       { user: userId },
       { $pull: { product: { productId: productId } } }
     );
-    res.json({status:true})
+    console.log("countsession:",req.session.cartCount)
+    productCount=req.session.cartCount;
+    console.log("productCount:",productCount)
+    productCount=productCount-1;
+    req.session.cartCount=productCount;
+    res.json({status:true,productCount})
   } catch (error) {
     console.log(error.message)
   }
@@ -271,7 +274,8 @@ const checkout = async (req, res) => {
     const userId = req.session.user
     req.session.coupon=false;
     // req.session.paymentStatus="pending"
-
+    const productCount=req.session.productCount
+    console.log("checkout",productCount)
     const addressDetails = await address.findOne({ user: userId })
     const userDetails=await user.findOne({_id:userId}).lean()
     if (addressDetails) {
@@ -291,9 +295,9 @@ const checkout = async (req, res) => {
       const grandTotal = totalPrice - discount
       req.session.grandTotal = grandTotal
       req.session.orginalTotal=grandTotal
-      res.render('user/checkout', { user: true, user1: true, addressData, addressDatas, discount, totalPrice, grandTotal,userDetails })
+      res.render('user/checkout', { user: true, user1: true, addressData, addressDatas, discount, totalPrice,isUser:true, grandTotal,userDetails,productCount})
     } else {
-      res.render('user/emptyCheckout', { user: true, user1: true })
+      res.render('user/emptyCheckout', { user: true, user1: true,isUser:true,productCount})
     }
 
   } catch (error) {
