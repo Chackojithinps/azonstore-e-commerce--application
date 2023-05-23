@@ -147,7 +147,7 @@ const getHomepage = async (req, res) => {
   const singleProduct = async (req, res) => {
     try {
       const id = req.query.id;
-      const singleProduct = await product.findOne({ _id: id }).lean();
+      const singleProduct = await product.findOne({ _id: id }).populate("product.category").lean();
       res.render("user/singleProduct", {
         user: true,
         user1: true,

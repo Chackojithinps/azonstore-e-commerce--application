@@ -405,6 +405,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-OKzpC6b4dG+4FwUaYJUQzf6Ex9+cWW0BBv+D31VVy0DCJyR12+D2QHUp/+YiYkrJ0Z9+YPp3c3I/8H2PzFgrgA==" crossorigin="anonymous"></script>
  --}}
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script src="sweetalert2.min.js"></script>
+<link rel="stylesheet" href="sweetalert2.min.css">
+<script src="sweetalert2.all.min.js"></script>
+{{!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> --}}
+
 <script>
   function increase(id, quantity) {
     const check = document.getElementById(`${id}_data-value`).value;
@@ -493,43 +499,13 @@ function deleteProduct(id) {
       },
       success: (response) => {
        
-        const swalWithBootstrapButtons = Swal.mixin({
-          customClass: {
-            confirmButton: 'btn btn-success',
-            cancelButton: 'btn btn-danger'
-          },
-          buttonsStyling: false
-        })
+        swal({
+          text: "Deleted",
+          icon: "error",
+        }).then(()=>{
+            location.replace("/cart")
+            $('#productCount').text(response.productCount)
 
-        swalWithBootstrapButtons.fire({
-          title: 'Are you sure?',
-          text: "You won't be able to revert this!",
-          icon: 'warning',
-          showCancelButton: true,
-          confirmButtonText: 'Yes, delete it!',
-          cancelButtonText: 'No, cancel!',
-          reverseButtons: true
-        }).then((result) => {
-           setTimeout(()=>{
-            location.reload()
-        },2000)
-        
-          if (result.isConfirmed) {
-            swalWithBootstrapButtons.fire(
-              'Deleted!',
-              'Your file has been deleted.',
-              'success'
-            )
-          } else if (
-            /* Read more about handling dismissals below */
-            result.dismiss === Swal.DismissReason.cancel
-          ) {
-            swalWithBootstrapButtons.fire(
-              'Cancelled',
-              'Your imaginary file is safe :)',
-              'error'
-            )
-          }
         })
 
 

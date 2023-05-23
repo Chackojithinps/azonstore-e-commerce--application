@@ -44,6 +44,7 @@ const getCartpage = async (req, res) => {
       }
     } else {
       res.redirect('/userLogin')
+
     }
   } catch (error) {
     console.log(error.message);
@@ -76,9 +77,9 @@ const addToCart = async (req, res) => {
                     { user: userId},
                     { $push: { product: { productId: productId } } }
                   );
-                  productCount=req.session.cartCount;
+                  productCount=req.session.productCount;
                   productCount=productCount+1;
-                  req.session.cartCount=productCount;
+                  req.session.productCount=productCount;
                 }
                 // await product.updateOne({_id:productId},{$inc:{quantity:-1}})         
                 // res.redirect("/");
@@ -98,7 +99,7 @@ const addToCart = async (req, res) => {
                   totalPrice: product1.price
                 });
                 productCount=1;
-                req.session.cartCount=productCount
+                req.session.productCount=productCount
                 const cartDatas = await cartData.save();
                 // await product.updateOne({_id:productId},{$inc:{quantity:-1}})
                 
@@ -107,6 +108,8 @@ const addToCart = async (req, res) => {
     } else {
       res.json({msg:"failed"})
     }
+  }else{
+    res.send("hello")
   }
   } catch (error) {
     console.log(error.message);
@@ -255,11 +258,11 @@ const deleteProduct = async (req, res) => {
       { user: userId },
       { $pull: { product: { productId: productId } } }
     );
-    console.log("countsession:",req.session.cartCount)
-    productCount=req.session.cartCount;
+    // console.log("countsession:",req.session.cartCount)
+    productCount=req.session.productCount;
     console.log("productCount:",productCount)
     productCount=productCount-1;
-    req.session.cartCount=productCount;
+    req.session.productCount=productCount;
     res.json({status:true,productCount})
   } catch (error) {
     console.log(error.message)
