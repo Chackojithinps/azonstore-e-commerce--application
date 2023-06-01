@@ -65,6 +65,9 @@ custom-colors, box-mode, custom-header, custom-menu, custom-logo, featured-image
   /* align-items: center; */
   margin-left: 25px;
 }
+.padding_top1{
+  padding-top: 45px;
+}
 div#error-message {
   margin-left: 25px;
   /* text-align: center; */

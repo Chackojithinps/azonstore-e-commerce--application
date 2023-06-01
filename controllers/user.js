@@ -78,9 +78,13 @@ const getHomepage = async (req, res) => {
     // console.log("cartData:",cartData)
     if(cartData){
         var productCount = cartData.product.length
-        console.log("Product count:", productCount);
+        console.log("Product count1:", productCount);
         req.session.productCount=productCount
-    }
+     }else{
+      var productCount=0;
+      req.session.productCount=productCount;
+
+     }
     // productCount=prou
     // req.session.cartCount=productCount
       const isUser = await user.findOne({ _id: req.session.user }).lean();
@@ -220,6 +224,9 @@ const getHomepage = async (req, res) => {
     const cartData=await cart.findOne({user:req.session.user})
     if(cartData){
       var productCount=cartData.product.length;
+      req.session.productCount=productCount;
+    }else{
+      var productCount=0;
       req.session.productCount=productCount;
     }
 
