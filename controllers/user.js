@@ -156,10 +156,15 @@ const getHomepage = async (req, res) => {
     try {
       const id = req.query.id;
       const singleProduct = await product.findOne({ _id: id }).lean();
+      const isUser = await user.findOne({ _id: req.session.user }).lean();
+
+      // req.session.productCount=productCount
+      var productCount=req.session.productCount
       res.render("user/singleProduct", {
         user: true,
         user1: true,
-        singleProduct,
+        isUser,
+        singleProduct,productCount
       });
     } catch (error) {
       console.log(error.message);

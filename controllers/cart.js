@@ -4,65 +4,18 @@ const user = require("../model/userModel");
 const address = require("../model/address")
 // <!--================================ getCart ========================================-->
 
-// const getCartpage = async (req, res) => {
-//   try {
-//     if (req.session.user) {
-//       const productCount=req.session.productCount
-//       const userCart = await cart
-//         .findOne({ user: req.session.user })
-//         .populate("product.productId").lean();
-//       const isUser = await user.findOne({ _id: req.session.user }).lean()
-//       if (userCart){
-//         const cartId=userCart._id
-//         const data = userCart.product;
-//         req.session.cartProducts = data
-//         const userList = data.map(({ productId, quantity, price }) => ({
-//           _id: productId ? productId._id : null,
-//           name: productId ? productId.name : null,
-//           productImage: productId ? productId.image : null,
-//           quantity,
-//           price: quantity * (productId ? productId.price : null)
-//         }));
-//         if (!userList[0]) {
-//           res.render("user/emptyCart", { user: true, user1: true });
-//         }
-//         req.session.userlist = userList
-      
-//         const subTotal = userList.reduce((total, product) => {
-//           total += product.price
-//           return total;
-//         }, 0)
-//         req.session.totalPrice = subTotal
-//         await cart.updateOne({ user: req.session.user }, { $set: { totalPrice: subTotal } })
-//         res.render("user/cart", {
-//           user: true,
-//           user1: true, isUser,
-//           userList, subTotal,cartId,productCount
-//         });
-//       } else {
-//         res.render("user/emptyCart", { user: true, user1: true, isUser:true,productCount});
-//       }
-//     } else {
-//       res.redirect('/userLogin')
-
-//     }
-//   } catch (error) {
-//     console.log(error.message);
-//   }
-// };
 const getCartpage = async (req, res) => {
   try {
     if (req.session.user) {
-      const productCount = req.session.productCount;
+      const productCount=req.session.productCount
       const userCart = await cart
         .findOne({ user: req.session.user })
         .populate("product.productId").lean();
-      const isUser = await user.findOne({ _id: req.session.user }).lean();
-
-      if (userCart) {
-        const cartId = userCart._id;
+      const isUser = await user.findOne({ _id: req.session.user }).lean()
+      if (userCart){
+        const cartId=userCart._id
         const data = userCart.product;
-        req.session.cartProducts = data;
+        req.session.cartProducts = data
         const userList = data.map(({ productId, quantity, price }) => ({
           _id: productId ? productId._id : null,
           name: productId ? productId.name : null,
@@ -70,40 +23,87 @@ const getCartpage = async (req, res) => {
           quantity,
           price: quantity * (productId ? productId.price : null)
         }));
-        
+        if (!userList[0]) {
+          res.render("user/emptyCart", { user: true, user1: true,isUser ,productCount});
+        }
+        req.session.userlist = userList
+      
         const subTotal = userList.reduce((total, product) => {
           total += product.price
           return total;
         }, 0)
-        req.session.userlist = userList;
-        req.session.totalPrice = subTotal;
-
-        await cart.updateOne({ user: req.session.user }, { $set: { totalPrice: subTotal } });
-
+        req.session.totalPrice = subTotal
+        await cart.updateOne({ user: req.session.user }, { $set: { totalPrice: subTotal } })
         res.render("user/cart", {
           user: true,
-          user1: true,
-          isUser,
-          userList,
-          subTotal,
-          cartId,
-          productCount
+          user1: true, isUser,
+          userList, subTotal,cartId,productCount
         });
       } else {
-        res.render("user/emptyCart", {
-          user: true,
-          user1: true,
-          isUser: true,
-          productCount
-        });
+        res.render("user/emptyCart", { user: true, user1: true, isUser:true,productCount});
       }
     } else {
-      res.redirect('/userLogin');
+      res.redirect('/userLogin')
+
     }
   } catch (error) {
     console.log(error.message);
   }
 };
+// const getCartpage = async (req, res) => {
+//   try {
+//     if (req.session.user) {
+//       const productCount = req.session.productCount;
+//       const userCart = await cart
+//         .findOne({ user: req.session.user })
+//         .populate("product.productId").lean();
+//       const isUser = await user.findOne({ _id: req.session.user }).lean();
+
+//       if (userCart) {
+//         const cartId = userCart._id;
+//         const data = userCart.product;
+//         req.session.cartProducts = data;
+//         const userList = data.map(({ productId, quantity, price }) => ({
+//           _id: productId ? productId._id : null,
+//           name: productId ? productId.name : null,
+//           productImage: productId ? productId.image : null,
+//           quantity,
+//           price: quantity * (productId ? productId.price : null)
+//         }));
+        
+//         const subTotal = userList.reduce((total, product) => {
+//           total += product.price
+//           return total;
+//         }, 0)
+//         req.session.userlist = userList;
+//         req.session.totalPrice = subTotal;
+
+//         await cart.updateOne({ user: req.session.user }, { $set: { totalPrice: subTotal } });
+
+//         res.render("user/cart", {
+//           user: true,
+//           user1: true,
+//           isUser,
+//           userList,
+//           subTotal,
+//           cartId,
+//           productCount
+//         });
+//       } else {
+//         res.render("user/emptyCart", {
+//           user: true,
+//           user1: true,
+//           isUser: true,
+//           productCount
+//         });
+//       }
+//     } else {
+//       res.redirect('/userLogin');
+//     }
+//   } catch (error) {
+//     console.log(error.message);
+//   }
+// };
 
 
 // <!--=================================== Add to Cart =======================================-->
@@ -166,7 +166,8 @@ const addToCart = async (req, res) => {
       res.json({msg:"failed"})
     }
   }else{
-    res.send("hello")
+    console.log("no hello")
+    res.redirect('/userLogin')
   }
   } catch (error) {
     console.log(error.message);
