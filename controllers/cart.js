@@ -4,18 +4,65 @@ const user = require("../model/userModel");
 const address = require("../model/address")
 // <!--================================ getCart ========================================-->
 
+// const getCartpage = async (req, res) => {
+//   try {
+//     if (req.session.user) {
+//       const productCount=req.session.productCount
+//       const userCart = await cart
+//         .findOne({ user: req.session.user })
+//         .populate("product.productId").lean();
+//       const isUser = await user.findOne({ _id: req.session.user }).lean()
+//       if (userCart){
+//         const cartId=userCart._id
+//         const data = userCart.product;
+//         req.session.cartProducts = data
+//         const userList = data.map(({ productId, quantity, price }) => ({
+//           _id: productId ? productId._id : null,
+//           name: productId ? productId.name : null,
+//           productImage: productId ? productId.image : null,
+//           quantity,
+//           price: quantity * (productId ? productId.price : null)
+//         }));
+//         if (!userList[0]) {
+//           res.render("user/emptyCart", { user: true, user1: true });
+//         }
+//         req.session.userlist = userList
+      
+//         const subTotal = userList.reduce((total, product) => {
+//           total += product.price
+//           return total;
+//         }, 0)
+//         req.session.totalPrice = subTotal
+//         await cart.updateOne({ user: req.session.user }, { $set: { totalPrice: subTotal } })
+//         res.render("user/cart", {
+//           user: true,
+//           user1: true, isUser,
+//           userList, subTotal,cartId,productCount
+//         });
+//       } else {
+//         res.render("user/emptyCart", { user: true, user1: true, isUser:true,productCount});
+//       }
+//     } else {
+//       res.redirect('/userLogin')
+
+//     }
+//   } catch (error) {
+//     console.log(error.message);
+//   }
+// };
 const getCartpage = async (req, res) => {
   try {
     if (req.session.user) {
-      const productCount=req.session.productCount
+      const productCount = req.session.productCount;
       const userCart = await cart
         .findOne({ user: req.session.user })
         .populate("product.productId").lean();
-      const isUser = await user.findOne({ _id: req.session.user }).lean()
-      if (userCart){
-        const cartId=userCart._id
+      const isUser = await user.findOne({ _id: req.session.user }).lean();
+
+      if (userCart) {
+        const cartId = userCart._id;
         const data = userCart.product;
-        req.session.cartProducts = data
+        req.session.cartProducts = data;
         const userList = data.map(({ productId, quantity, price }) => ({
           _id: productId ? productId._id : null,
           name: productId ? productId.name : null,
@@ -23,33 +70,41 @@ const getCartpage = async (req, res) => {
           quantity,
           price: quantity * (productId ? productId.price : null)
         }));
-        if (!userList[0]) {
-          res.render("user/emptyCart", { user: true, user1: true });
-        }
-        req.session.userlist = userList
-      
+        
         const subTotal = userList.reduce((total, product) => {
           total += product.price
           return total;
         }, 0)
-        req.session.totalPrice = subTotal
-        await cart.updateOne({ user: req.session.user }, { $set: { totalPrice: subTotal } })
+        req.session.userlist = userList;
+        req.session.totalPrice = subTotal;
+
+        await cart.updateOne({ user: req.session.user }, { $set: { totalPrice: subTotal } });
+
         res.render("user/cart", {
           user: true,
-          user1: true, isUser,
-          userList, subTotal,cartId,productCount
+          user1: true,
+          isUser,
+          userList,
+          subTotal,
+          cartId,
+          productCount
         });
       } else {
-        res.render("user/emptyCart", { user: true, user1: true, isUser:true,productCount});
+        res.render("user/emptyCart", {
+          user: true,
+          user1: true,
+          isUser: true,
+          productCount
+        });
       }
     } else {
-      res.redirect('/userLogin')
-
+      res.redirect('/userLogin');
     }
   } catch (error) {
     console.log(error.message);
   }
 };
+
 
 // <!--=================================== Add to Cart =======================================-->
 
@@ -78,6 +133,7 @@ const addToCart = async (req, res) => {
                     { $push: { product: { productId: productId } } }
                   );
                   productCount=req.session.productCount;
+                  console.log("productCount55:",productCount)
                   productCount=productCount+1;
                   req.session.productCount=productCount;
                 }
@@ -99,6 +155,7 @@ const addToCart = async (req, res) => {
                   totalPrice: product1.price
                 });
                 productCount=1;
+                console.log("productCount55:",productCount)
                 req.session.productCount=productCount
                 const cartDatas = await cartData.save();
                 // await product.updateOne({_id:productId},{$inc:{quantity:-1}})
@@ -331,6 +388,8 @@ const addSingleproduct = async (req, res) => {
           { user: userId },
           { $push: { product: { $each: [{ productId: productId, quantity: count }] } } }
         );
+        var productCount=req.session.productCount+1;
+        req.session.productCount=productCount;
       }
       res.redirect("/cart");
     } else {
@@ -347,6 +406,8 @@ const addSingleproduct = async (req, res) => {
         ],
         // totalPrice:product1.price*count
       });
+      // var productCount=req.session.productCount+1;
+      // req.session.productCount=productCount;
       const cartDatas = await cartData.save();
 
       res.redirect("/");

@@ -60,18 +60,21 @@
 
                                                 <span>Account</span></a>
                                         </li>
+                                        {{#if isNotuser}}
                                         <li>
 
                                             <a href="userSignup"><i class="fas fa-user-plus u-s-m-r-6"></i>
 
                                                 <span>Signup</span></a>
                                         </li>
+                                        {{!-- {{/if}}
+                                        {{#if isNotuser}} --}}
                                         <li>
-
                                             <a href="userLogin"><i class="fas fa-lock u-s-m-r-6"></i>
 
                                                 <span>Signin</span></a>
                                         </li>
+                                        {{/if}}
                                         {{#if isUser}}
                                         <li>
 

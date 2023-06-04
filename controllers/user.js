@@ -89,11 +89,15 @@ const getHomepage = async (req, res) => {
     // req.session.cartCount=productCount
       const isUser = await user.findOne({ _id: req.session.user }).lean();
       req.session.isUser=isUser
+      if(!isUser){
+        var isNotuser=true
+        req.session.isNotuser=true;
+      }
       res.render("user/home", {
         user1: true,
         user: true,
         productData,
-        isUser,
+        isUser,isNotuser,
         productData, categoryData,Largerbanner,smallerbanner,productCount
       });
     
@@ -151,7 +155,7 @@ const getHomepage = async (req, res) => {
   const singleProduct = async (req, res) => {
     try {
       const id = req.query.id;
-      const singleProduct = await product.findOne({ _id: id }).populate("product.category").lean();
+      const singleProduct = await product.findOne({ _id: id }).lean();
       res.render("user/singleProduct", {
         user: true,
         user1: true,
@@ -216,7 +220,10 @@ const getHomepage = async (req, res) => {
       // req.session.catergoryFilter=false;
       // req.session.filter=false;
       req.session.value1=false
-     const isUser = await user.findOne({ _id: req.session.user }).lean()   
+     const isUser = await user.findOne({ _id: req.session.user }).lean()
+     if(!isUser){
+       var isNotuser=true;
+     }   
     // Get the total number of documents and calculate the number of pages
     const totalDocuments = await product.countDocuments();
     const totalPages = Math.ceil(totalDocuments / perPage); 
@@ -276,7 +283,7 @@ const getHomepage = async (req, res) => {
         user: true,
         user1: true,
         productData: productsData,
-        isUser,
+        isUser,isNotuser,
         minPrice:minPrice,
         maxPrice,
         categoryData: categories,
