@@ -65,6 +65,9 @@ custom-colors, box-mode, custom-header, custom-menu, custom-logo, featured-image
   /* align-items: center; */
   margin-left: 25px;
 }
+.nav-Headers{
+  margin-left: 40px;
+}
 .padding_top1{
   padding-top: 45px;
 }
