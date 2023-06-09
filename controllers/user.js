@@ -7,7 +7,8 @@ const user = require("../model/userModel");
 const product = require("../model/product");
 const cart = require("../model/cart");
 const category = require("../model/category")
-const banner=require('../model/banner')
+const banner=require('../model/banner');
+// const category = require("../model/category");
 
 // <!--================================ //bcrypt code ===================================-->
 
@@ -156,15 +157,16 @@ const getHomepage = async (req, res) => {
     try {
       const id = req.query.id;
       const singleProduct = await product.findOne({ _id: id }).lean();
+      var categoryId=singleProduct.category;
       const isUser = await user.findOne({ _id: req.session.user }).lean();
-
-      // req.session.productCount=productCount
+      const categoryData=await category.findOne({_id:categoryId}).lean()
+      console.log("categoryData",categoryData)
       var productCount=req.session.productCount
       res.render("user/singleProduct", {
         user: true,
         user1: true,
         isUser,
-        singleProduct,productCount
+        singleProduct,productCount,categoryData
       });
     } catch (error) {
       console.log(error.message);
