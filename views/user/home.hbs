@@ -221,7 +221,7 @@
                                                    
                                                     <li>
                                                         {{!-- data-modal-id="#add-to-cart" --}}
-                                                           <a href="addToCart?id={{_id}}"
+                                                           <a onclick="addToCart('{{this._id}}')"
                                                             data-tooltip="tooltip" data-placement="top"
                                                             title="Add to Cart"><i class="fas fa-plus-circle"></i></a>
                                                     </li>
@@ -812,5 +812,33 @@ $(document).ready(function () {
 										}
 					});
 				});
+function addToCart(id) {
+        console.log(id)
+        $.ajax({
+            url: '/addToCart',
+            method: 'post',
+            data: {
+                productId: id,
+            },
+            success: (response) => {
 
+                if (response.msg == "success") {
+                    swal("Product added to cart!", "Please check the cart page!", "success");
+                    console.log(response.productCount)
+                    $('#productCount').text(response.productCount)
+
+                } if (response.msg == "failed") {
+                    swal({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'the stoke limit reach!',
+                    });
+                }
+
+                error: (error) => {
+                    alert(error.message)
+                }
+            }
+        });
+    }
 </script>
