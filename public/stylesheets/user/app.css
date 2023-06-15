@@ -56,6 +56,11 @@ custom-colors, box-mode, custom-header, custom-menu, custom-logo, featured-image
     margin-left: 0px;
     padding-top: 15px;
  }
+ .coupon-failed{
+   color: red;
+   margin-top: 4px;
+   margin-left: 2px;
+ }
  p.text-danger.login-failed {
   font-weight: 500;
   /* margin-left: 48px; */
