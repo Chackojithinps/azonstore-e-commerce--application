@@ -395,23 +395,18 @@ const addSingleproduct = async (req, res) => {
       res.redirect("/cart");
     } else {
       const product1 = await product.findOne({ _id: productId })
-      // console.log(product1)
       const cartData = new cart({
         user: userId,
         product: [
           {
             productId: productId,
             quantity: count,
-            // price:product1.price*quantity
           },
         ],
-        // totalPrice:product1.price*count
       });
-      // var productCount=req.session.productCount+1;
-      // req.session.productCount=productCount;
       const cartDatas = await cartData.save();
 
-      res.redirect("/");
+      res.redirect("/cart");
     }
   } catch (error) {
     console.log(error.message)
