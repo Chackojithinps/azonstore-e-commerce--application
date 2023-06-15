@@ -801,17 +801,10 @@
 </div>
 <!--====== End - Main App ======-->
 
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
 
-$(document).ready(function () {
-					var urlParams = new URLSearchParams(window.location.search);
-						var categoryId = urlParams.get('categoryId');
-						$('.category-lin').each(function () {
-							if ($(this).data('category-id') === categoryId) {
-									$(this).css('color', 'black');
-										}
-					});
-				});
 function addToCart(id) {
         console.log(id)
         $.ajax({
@@ -841,4 +834,15 @@ function addToCart(id) {
             }
         });
     }
+
+
+    $(document).ready(function () {
+					var urlParams = new URLSearchParams(window.location.search);
+						var categoryId = urlParams.get('categoryId');
+						$('.category-lin').each(function () {
+							if ($(this).data('category-id') === categoryId) {
+									$(this).css('color', 'black');
+										}
+					});
+				});
 </script>
