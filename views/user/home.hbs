@@ -826,6 +826,8 @@ function addToCart(id) {
                         title: 'Oops...',
                         text: 'the stoke limit reach!',
                     });
+                } if(response.msg=='failed2'){
+                     window.location.href = '/userLogin';
                 }
 
                 error: (error) => {

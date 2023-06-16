@@ -167,7 +167,7 @@ const addToCart = async (req, res) => {
     }
   }else{
     console.log("no hello")
-    res.redirect('/userLogin')
+    res.json({msg:"failed2"})
   }
   } catch (error) {
     console.log(error.message);
