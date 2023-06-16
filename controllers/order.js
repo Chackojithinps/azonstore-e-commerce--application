@@ -343,8 +343,8 @@ const userorderDetails=async(req,res)=>{
             status:status,
             date:date
           }));
-         
-            res.render('user/orderDetails',{user:true,user1:true,productDetails,orderDetails})
+          const userData = await user.findOne({ _id: req.session.user }).lean()
+            res.render('user/orderDetails',{user:true,user1:true,productDetails,orderDetails,userData})
     }
     
 
@@ -504,10 +504,10 @@ const returnProduct=async(req,res)=>{
 }
 const walletHistory=async(req,res)=>{
     try {
-        const userDetails=await user.findOne({_id:req.session.user}).lean()
-        console.log("userDetails:",userDetails) 
-        const walletData=userDetails.walletHistory
-        res.render('user/walletHistory',{user:true,user1:true,walletData})
+        const userData=await user.findOne({_id:req.session.user}).lean()
+        // console.log("userDetails:",userDeta) 
+        const walletData=userDta.walletHistory
+        res.render('user/walletHistory',{user:true,user1:true,walletData,userData})
     } catch (error) {
         console.log(error.message)
     }
