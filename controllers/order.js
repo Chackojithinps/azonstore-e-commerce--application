@@ -115,7 +115,6 @@ const initiatePay= async(req,res)=>{
 // }
 const walletInfo=async(req,res)=>{
     try {
-        console.log("HEEEEEEEEEEEEEee")
         const userData=await user.findOne({_id:req.session.user}).lean()
         console.log(userData)
         console.log(1)

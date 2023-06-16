@@ -387,8 +387,12 @@ const getHomepage = async (req, res) => {
         const isUser = await user.findOne({ _id: req.session.user }).lean()
         productCount=req.session.productCount;
         const userData = await user.findOne({ _id: req.session.user }).lean();
-        console.log(userData);
-        res.render("user/profile", { user: true, user1: true, userData, isUser,productCount });
+        if(userData.wallet==null){
+          var wallet=0;
+        }else{
+          wallet=userData.wallet
+        }
+        res.render("user/profile", { user: true, user1: true, userData , isUser , productCount , wallet });
       } else {
         res.redirect("/userLogin");
       }
