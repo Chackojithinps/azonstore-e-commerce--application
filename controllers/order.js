@@ -72,47 +72,7 @@ const initiatePay= async(req,res)=>{
         console.log(error.message)
     }
 }
-// const addToWallet=async(req,res)=>{
-//     const isChecked=req.body.isChecked
-//     console.log("HHHHHHHHHHHHHHHHHHHHHHH")
-//     try {
-//         const userData=await user.findOne({_id:req.session.user}).lean()
-//         const walletA=userData.wallet
 
-//         if(isChecked==true){
-//             if(userData.wallet){
-//                 var finalAmount=req.session.grandTotal-userData.wallet
-//                 if(finalAmount<=0){
-//                     finalAmount=0;
-//                 }
-//                 var walletBalence=userData.wallet-req.session.grandTotal
-//                 if(walletBalence<=0){
-//                     walletBalence=0;
-//                 }
-//                 walletAmount=-(req.session.grandTotal)
-//                 console.log("finalAmount)
-//                 console.log(walletAmount)
-//                 console.log(walletBalence)
-//         res.json({message:"success",finalAmount:finalAmount,walletAmount:walletAmount,walletA,walletBalence})
-               
-//         }
-//         }else{
-//          if(userData.wallet){
-//             var finalAmount=req.session.grandTotal;
-//             var walletBalence=walletA
-//             walletAmount=0;
-//             console.log(finalAmount)
-//                 console.log(walletAmount)
-//                 console.log(walletBalence)
-//             res.json({message:"unchecked",finalAmount:finalAmount,walletAmount:walletAmount,walletA,walletBalence})
-
-//          }
-//       }
-       
-//     }catch(error) {
-//         console.log(error.message)
-//     }
-// }
 const walletInfo=async(req,res)=>{
     try {
         const userData=await user.findOne({_id:req.session.user}).lean()
