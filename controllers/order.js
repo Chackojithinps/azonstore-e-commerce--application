@@ -89,7 +89,7 @@ const walletInfo=async(req,res)=>{
                     req.body.payment="wallet"
                     req.body.paymentStatus="success"
                     req.body.status="ordered"
-                    // req.body.date = new Date().toLocaleDateString();
+                    req.body.date = new Date().toLocaleDateString();
                     const orderData= await order.create(req.body)
                     const options = { day: "numeric", month: "numeric", year: "2-digit" };
                     const dateString1 = new Date().toLocaleDateString('en-GB', options);
