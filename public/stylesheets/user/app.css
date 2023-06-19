@@ -63,11 +63,7 @@ custom-colors, box-mode, custom-header, custom-menu, custom-logo, featured-image
  }
  p.text-danger.login-failed {
   font-weight: 500;
-  /* margin-left: 48px; */
-  /* text-align: center; */
-  /* display: flex; */
-  /* justify-content: center; */
-  /* align-items: center; */
+
   margin-left: 25px;
 }
 .nav-Headers{
@@ -256,6 +252,13 @@ iframe[src*="soundcloud"] {
 Box Module
 --------------------------------------------------------------*/
 /* Body Element */
+
+button.btn.btn--icon.toggle-button.toggle-button--secondary.fas.fa-cog.left-icon-button {
+  display: none;
+}
+button.btn.btn--icon.toggle-button.toggle-button--secondary.fas.fa-shopping-bag.toggle-button-shop {
+  display: none;
+}
 @media (min-width: 576px) {
   html.boxed body {
     background-color: #ffffff;
@@ -354,7 +357,16 @@ Box Module
   html.boxed footer .container {
     padding-left: 40px;
     padding-right: 40px; } }
-
+@media (max-width:1004px){
+  button.btn.btn--icon.toggle-button.toggle-button--secondary.fas.fa-cog.left-icon-button {
+    display: block;
+   }
+}
+@media (max-width:1004px){
+  button.btn.btn--icon.toggle-button.toggle-button--secondary.fas.fa-shopping-bag.toggle-button-shop {
+    display: block;
+  }
+}
 /*--------------------------------------------------------------
 2.0 Typography
 --------------------------------------------------------------*/
