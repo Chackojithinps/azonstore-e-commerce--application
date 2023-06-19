@@ -1341,8 +1341,10 @@
                         <button
                             class="btn btn--icon toggle-button toggle-button--secondary fas fa-shopping-bag toggle-button-shop"
                             type="button"></button> 
-
-                        <span class="total-item-round">2</span>
+                            {{#if isUser}}
+                                <span class="total-item-round" id="productCount">{{productCount}}</span></a>
+                            {{/if}}
+                        {{!-- <span class="total-item-round">2</span> --}}
 
                         <!--====== Menu ======-->
                         <div class="ah-lg-mode">
