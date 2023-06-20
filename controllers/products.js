@@ -6,7 +6,7 @@ const cloudinary=require('../middleware/cloudinary')
 const productLists = async (req, res) => {
     try {
         const productData = await product.find().populate('category').lean()
-        res.render('adminside/products', { admin: true, admin1: true, products: productData })
+        res.render('adminside/products', { admin: true, admin1: true, products: productData ,products1:true})
     } catch (error) {
         console.log(error.message)
     }

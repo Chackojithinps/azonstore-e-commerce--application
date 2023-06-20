@@ -181,7 +181,7 @@ const orderManagement=async(req,res)=>{
     try {
         const orderData=await order.find().populate('products.productId').lean()
         req.session.orderData=orderData
-        res.render('adminside/order',{admin:true,admin1:true,orderData})
+        res.render('adminside/order',{admin:true,admin1:true,orderData,order:true})
     } catch (error) {
         console.log(error.message)
     }

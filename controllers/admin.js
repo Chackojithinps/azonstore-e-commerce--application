@@ -78,7 +78,7 @@ const adminDashboard = async (req, res) => {
 
         }
 
-        res.render('adminside/dashboard', { admin: true, admin1: true, orderDatas, orderData,ord, del, ret, can, shi, dis, mo, tu, we, th, fr, sa, su })
+        res.render('adminside/dashboard', { admin: true, admin1: true, orderDatas, orderData,ord, del, ret, can, shi, dis, mo, tu, we, th, fr, sa, su,key:true})
     } catch (error) {
         console.log(error.message)
     }
@@ -91,7 +91,7 @@ const userManangement = async (req, res) => {
     try {
         const userData = await user.find().lean()
         console.log(userData)
-        res.render('adminside/user', { admin: true, admin1: true, userData })
+        res.render('adminside/user', { admin: true, admin1: true, userData ,userList:true})
     } catch (error) {
         console.log(error.message)
     }

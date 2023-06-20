@@ -20,7 +20,7 @@ const getCoupon=async(req,res)=>{
             return{expiryDate,id,name,code,discount,maxamount,minamount}
         })
         console.log(couponData)
-        res.render('adminside/couponPage',{admin:true,admin1:true,couponData})
+        res.render('adminside/couponPage',{admin:true,admin1:true,couponData,coupon:true})
     } catch (error) {
         console.log(error.message)
     }

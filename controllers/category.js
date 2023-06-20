@@ -5,7 +5,7 @@ const category=require('../model/category')
 const getCategory=async(req,res)=>{
     try {
         const categoryData=await category.find().lean()
-        res.render('adminside/category',{admin:true,admin1:true,categoryData})
+        res.render('adminside/category',{admin:true,admin1:true,categoryData,category:true})
     }catch (error) {
        console.log(error.message) 
     }

@@ -3,7 +3,7 @@ const bannerManagement=async(req,res)=>{
     try {
         const bannerData=await banner.find().lean()
         console.log(bannerData)
-        res.render('adminside/banner',{admin:true,admin1:true,bannerData})
+        res.render('adminside/banner',{admin:true,admin1:true,bannerData,banner:true})
 
     } catch (error) {
         console.log(error.message);

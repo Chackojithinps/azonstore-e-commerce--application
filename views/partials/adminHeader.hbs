@@ -28,13 +28,14 @@
                     </div>
                 </div> --}}
                 <div class="navbar-nav w-100 mt-5">
-                    <a href="adminDashboard" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-                    <a href="userList" class="nav-item nav-link"><i class="fa fa-th me-2"></i>users</a>
-                    <a href="category" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Category</a>
-                    <a href="products" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Products</a>
-                    <a href="coupon" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Coupon</a>
-                    <a href="orders" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Orders</a>
-                    <a href="banner" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Banner</a>
+                    
+                    <a href="adminDashboard" class="nav-item nav-link {{#if key}} active {{/if}}"><i class="fa fa-tachometer-alt me-2 "></i>Dashboard</a>
+                    <a href="userList" class="nav-item nav-link {{#if userList}} active {{/if}}"><i class="fa fa-th me-2"></i>users</a>
+                    <a href="category" class="nav-item nav-link {{#if category}} active {{/if}}"><i class="fa fa-keyboard me-2"></i>Category</a>
+                    <a href="products" class="nav-item nav-link {{#if products1}} active {{/if}}"><i class="fa fa-table me-2"></i>Products</a>
+                    <a href="coupon" class="nav-item nav-link {{#if coupon}} active {{/if}}"><i class="fa fa-chart-bar me-2"></i>Coupon</a>
+                    <a href="orders" class="nav-item nav-link {{#if order}} active {{/if}}"><i class="fa fa-chart-bar me-2"></i>Orders</a>
+                    <a href="banner" class="nav-item nav-link  {{#if banner}} active {{/if}}"><i class="fa fa-chart-bar me-2"></i>Banner</a>
 
                  
                 </div>
