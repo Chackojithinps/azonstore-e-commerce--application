@@ -466,7 +466,7 @@ const walletHistory=async(req,res)=>{
     try {
         const userData=await user.findOne({_id:req.session.user}).lean()
         // console.log("userDetails:",userDeta) 
-        const walletData=userDta.walletHistory
+        const walletData=userData.walletHistory
         res.render('user/walletHistory',{user:true,user1:true,walletData,userData})
     } catch (error) {
         console.log(error.message)
