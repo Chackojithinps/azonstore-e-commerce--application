@@ -10,7 +10,7 @@ const getCartpage = async (req, res) => {
       const productCount=req.session.productCount
       const userCart = await cart
         .findOne({ user: req.session.user })
-        .populate("product.productId").lean();
+        .populate("product.productId").lean()
       const isUser = await user.findOne({ _id: req.session.user }).lean()
       if (userCart){
         const cartId=userCart._id
